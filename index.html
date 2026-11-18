@@ -1,0 +1,3484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Histoire du jeu vidéo en France</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    /*
+      Retro 8-bit palette:
+      Sky blue: #3a7bd5
+      Deep blue: #1d2b53
+      Cream: #f4ecd8
+      Warm sand: #e8dfc7
+      Red: #c8372d
+      Mustard: #e0a526
+      Green: #3f8f4f
+      Dark ink: #14141f
+    */
+    :root {
+      --c-sky: #3a7bd5;
+      --c-blue: #1d2b53;
+      --c-cream: #f4ecd8;
+      --c-sand: #e8dfc7;
+      --c-sand-dark: #d5c7a3;
+      --c-red: #c8372d;
+      --c-mustard: #e0a526;
+      --c-green: #3f8f4f;
+      --c-ink: #14141f;
+      --font-pixel: 'Press Start 2P', 'Courier New', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--c-sand);
+      background-image:
+        linear-gradient(to right, rgba(29, 43, 83, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(29, 43, 83, 0.07) 1px, transparent 1px);
+      background-size: 16px 16px;
+      color: var(--c-ink);
+      font-family: var(--font-pixel);
+      font-size: 11px;
+      line-height: 1.6;
+      padding: 14px;
+      overflow-x: hidden;
+    }
+
+    .page-wrapper {
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+
+    /* Tricolor French Pixel Ribbon */
+    .tricolor-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      height: 8px;
+      border: 3px solid var(--c-ink);
+      border-bottom: none;
+    }
+    .tricolor-blue { background: var(--c-blue); }
+    .tricolor-white { background: #ffffff; }
+    .tricolor-red { background: var(--c-red); }
+
+    header {
+      background: var(--c-cream);
+      border: 3px solid var(--c-ink);
+      box-shadow: 5px 5px 0 0 var(--c-ink);
+      padding: 14px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+
+    .title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .edition-tag {
+      display: inline-block;
+      background: var(--c-blue);
+      color: var(--c-mustard);
+      font-size: 7px;
+      padding: 3px 6px;
+      border: 2px solid var(--c-ink);
+      width: fit-content;
+    }
+
+    h1 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      color: var(--c-ink);
+      text-shadow: 2px 2px 0px var(--c-sand-dark);
+    }
+
+    h2 {
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--c-blue);
+      border-bottom: 3px solid var(--c-ink);
+      padding-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--c-red);
+      border: 2px solid var(--c-ink);
+      flex-shrink: 0;
+    }
+
+    /* Pixel Cards with Cursor Hover Zoom */
+    .pixel-box {
+      background: var(--c-cream);
+      border: 3px solid var(--c-ink);
+      box-shadow: 5px 5px 0 0 var(--c-ink);
+      padding: 14px;
+      margin-bottom: 22px;
+      position: relative;
+      transition: transform 0.14s ease-out, box-shadow 0.14s ease-out;
+      will-change: transform;
+    }
+
+    .pixel-box::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 4px;
+      height: 4px;
+      background: var(--c-ink);
+      box-shadow: 0 0 0 1px var(--c-mustard);
+    }
+
+    body.cursor-zoom-enabled .zoom-target:hover {
+      z-index: 30;
+      box-shadow: 9px 9px 0 0 var(--c-ink);
+    }
+
+    .pixel-btn {
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      padding: 8px 11px;
+      background: var(--c-cream);
+      color: var(--c-ink);
+      border: 3px solid var(--c-ink);
+      box-shadow: 3px 3px 0 0 var(--c-ink);
+      cursor: pointer;
+      text-transform: uppercase;
+      user-select: none;
+      touch-action: manipulation;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pixel-btn:hover, .pixel-btn:focus-visible {
+      background: var(--c-mustard);
+      outline: 2px solid var(--c-ink);
+      outline-offset: 2px;
+    }
+
+    .pixel-btn:active, .pixel-btn.pressed {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 0 var(--c-ink);
+      background: var(--c-mustard);
+    }
+
+    .pixel-btn.active {
+      background: var(--c-blue);
+      color: var(--c-cream);
+    }
+
+    .header-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    #canvas-container {
+      position: relative;
+      width: 100%;
+      height: 290px;
+      background-color: var(--c-sky);
+      border: 3px solid var(--c-ink);
+      box-shadow: 5px 5px 0 0 var(--c-ink);
+      overflow: hidden;
+      margin-bottom: 14px;
+      touch-action: none;
+    }
+
+    #gameCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      touch-action: none;
+    }
+
+    /* Full-screen confetti overlay canvas */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 300;
+    }
+
+    .interaction-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .keys-legend {
+      font-size: 8px;
+      color: var(--c-ink);
+      line-height: 1.6;
+      background: var(--c-cream);
+      padding: 8px 10px;
+      border: 3px solid var(--c-ink);
+      box-shadow: 3px 3px 0 0 var(--c-ink);
+    }
+
+    .mobile-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dpad-cluster, .action-cluster {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dpad-cluster .pixel-btn,
+    .action-cluster .pixel-btn {
+      min-width: 64px;
+      height: 44px;
+      font-size: 9px;
+      font-weight: bold;
+    }
+
+    .action-cluster .btn-jump {
+      background: #dfd4b8;
+    }
+
+    .action-cluster .btn-inspect {
+      background: var(--c-mustard);
+    }
+
+    .timeline-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .timeline-marker {
+      background: var(--c-cream);
+      border: 3px solid var(--c-ink);
+      box-shadow: 3px 3px 0 0 var(--c-ink);
+      padding: 8px 6px;
+      min-height: 54px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 8px;
+      cursor: pointer;
+      color: var(--c-ink);
+      font-family: var(--font-pixel);
+      text-transform: uppercase;
+      line-height: 1.3;
+      touch-action: manipulation;
+    }
+
+    .timeline-marker:hover {
+      background: var(--c-sand);
+    }
+
+    .timeline-marker.visited {
+      background: var(--c-green);
+      color: #ffffff;
+    }
+
+    .timeline-marker.current {
+      border: 3px solid var(--c-red);
+      background: var(--c-mustard);
+      color: var(--c-ink);
+    }
+
+    .timeline-marker-year {
+      font-size: 9px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .timeline-marker-name {
+      font-size: 7px;
+      word-break: break-word;
+    }
+
+    /* Detailed Retro Cartridge Shelf */
+    .shelf-container {
+      margin-bottom: 22px;
+    }
+
+    .shelf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+      background: var(--c-sand-dark);
+      border: 3px solid var(--c-ink);
+      padding: 10px;
+    }
+
+    .cartridge-slot {
+      border: 2px dashed var(--c-ink);
+      height: 78px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 4px;
+      text-align: center;
+      font-size: 7px;
+      background: var(--c-sand);
+      color: var(--c-ink);
+      font-family: var(--font-pixel);
+      user-select: none;
+      touch-action: manipulation;
+      position: relative;
+    }
+
+    .cartridge-slot.unlocked {
+      border: 3px solid var(--c-ink);
+      box-shadow: 3px 3px 0 0 var(--c-ink);
+      background: var(--c-mustard);
+      color: var(--c-ink);
+      cursor: pointer;
+      border-top: 8px solid var(--c-blue);
+    }
+
+    .cartridge-slot.unlocked::after {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: 16%;
+      width: 68%;
+      height: 4px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--c-ink) 0px,
+        var(--c-ink) 3px,
+        #ffffff 3px,
+        #ffffff 6px
+      );
+    }
+
+    dialog {
+      position: fixed;
+      inset: 0;
+      margin: auto;
+      max-width: 640px;
+      width: calc(100% - 24px);
+      max-height: 88vh;
+      background: var(--c-cream);
+      border: 4px solid var(--c-ink);
+      box-shadow: 8px 8px 0 0 var(--c-ink);
+      padding: 16px;
+      color: var(--c-ink);
+      overflow-y: auto;
+      z-index: 200;
+    }
+
+    dialog::backdrop {
+      background: rgba(20, 20, 31, 0.78);
+    }
+
+    .dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      border-bottom: 3px solid var(--c-ink);
+      padding-bottom: 8px;
+    }
+
+    .dialog-meta {
+      font-size: 8px;
+      margin-bottom: 12px;
+      background: var(--c-sand);
+      padding: 8px;
+      border: 2px solid var(--c-ink);
+      line-height: 1.6;
+    }
+
+    .dialog-image-box {
+      width: 100%;
+      height: 180px;
+      border: 3px solid var(--c-ink);
+      margin-bottom: 4px;
+      background: #dfd4b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .dialog-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-placeholder-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--c-ink);
+      background: repeating-linear-gradient(
+        45deg,
+        #dfd4b8,
+        #dfd4b8 10px,
+        #cfc2a0 10px,
+        #cfc2a0 20px
+      );
+      text-transform: uppercase;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .image-credit {
+      font-size: 7px;
+      color: var(--c-ink);
+      margin-bottom: 12px;
+    }
+
+    .dialog-section {
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.45);
+      border-left: 3px solid var(--c-blue);
+      padding: 6px 8px;
+    }
+
+    .dialog-section-title {
+      font-size: 9px;
+      color: var(--c-blue);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .dialog-source {
+      font-size: 8px;
+      margin-top: 12px;
+      padding-top: 8px;
+      border-top: 2px solid var(--c-ink);
+    }
+
+    .dialog-source a {
+      color: var(--c-blue);
+      text-decoration: underline;
+      word-break: break-all;
+    }
+
+    /* Victory Modal Styling */
+    #victory-dialog {
+      max-width: 520px;
+      text-align: center;
+      border: 4px solid var(--c-ink);
+      background: var(--c-cream);
+    }
+
+    .victory-banner {
+      background: var(--c-blue);
+      color: var(--c-mustard);
+      border: 3px solid var(--c-ink);
+      padding: 14px 10px;
+      margin-bottom: 14px;
+    }
+
+    .victory-banner h2 {
+      color: #ffffff;
+      border: none;
+      justify-content: center;
+      font-size: 14px;
+      margin-bottom: 6px;
+      padding: 0;
+    }
+
+    .victory-banner h2::before {
+      display: none;
+    }
+
+    .victory-stats-box {
+      background: var(--c-sand);
+      border: 2px solid var(--c-ink);
+      padding: 12px;
+      margin-bottom: 14px;
+      font-size: 9px;
+      line-height: 1.8;
+    }
+
+    .victory-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Detailed Zoomable Map Section */
+    .map-grid-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 680px) {
+      .map-grid-container {
+        grid-template-columns: 350px 1fr;
+      }
+    }
+
+    .map-viewport-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 350px;
+      border: 3px solid var(--c-ink);
+      background: #2f6690;
+      box-shadow: 3px 3px 0 0 var(--c-ink);
+    }
+
+    #franceMapCanvas {
+      width: 100%;
+      height: 340px;
+      display: block;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    #franceMapCanvas:active {
+      cursor: grabbing;
+    }
+
+    .map-zoom-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--c-ink);
+      padding: 6px;
+      gap: 6px;
+    }
+
+    .map-zoom-btns {
+      display: flex;
+      gap: 4px;
+    }
+
+    .map-zoom-btn {
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      padding: 4px 8px;
+      background: var(--c-cream);
+      color: var(--c-ink);
+      border: 2px solid var(--c-mustard);
+      cursor: pointer;
+    }
+
+    .map-zoom-btn:hover {
+      background: var(--c-mustard);
+      color: var(--c-ink);
+    }
+
+    .map-zoom-level {
+      color: #ffffff;
+      font-size: 8px;
+    }
+
+    .city-details {
+      font-size: 9px;
+      background: var(--c-sand);
+      border: 3px solid var(--c-ink);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .paris-highlight-box {
+      background: var(--c-cream);
+      border: 2px solid var(--c-blue);
+      padding: 8px;
+      font-size: 8px;
+      line-height: 1.5;
+    }
+
+    .paris-highlight-title {
+      color: var(--c-red);
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Quiz styles with blur overlay and 1-minute timer */
+    .quiz-header-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 3px solid var(--c-ink);
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+
+    .quiz-header-row h2 {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .quiz-timer-badge {
+      font-size: 9px;
+      padding: 5px 8px;
+      background: var(--c-blue);
+      color: #ffffff;
+      border: 2px solid var(--c-ink);
+    }
+
+    .quiz-timer-badge.urgent {
+      background: var(--c-red);
+      color: #ffffff;
+    }
+
+    .quiz-wrapper {
+      position: relative;
+      min-height: 240px;
+    }
+
+    .quiz-blurred {
+      filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .quiz-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(244, 236, 216, 0.78);
+      border: 3px solid var(--c-ink);
+      padding: 16px;
+      z-index: 10;
+      gap: 12px;
+    }
+
+    .quiz-overlay.hidden {
+      display: none;
+    }
+
+    .quiz-overlay p {
+      font-size: 9px;
+      max-width: 440px;
+      color: var(--c-ink);
+    }
+
+    .quiz-start-btn {
+      background: var(--c-mustard);
+      font-size: 11px;
+      padding: 12px 18px;
+    }
+
+    .quiz-item {
+      background: var(--c-sand);
+      border: 2px solid var(--c-ink);
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .quiz-question {
+      font-size: 9px;
+      color: var(--c-ink);
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    @media (min-width: 560px) {
+      .quiz-options {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .quiz-option-btn {
+      font-family: var(--font-pixel);
+      font-size: 8px;
+      text-align: left;
+      padding: 8px;
+      background: var(--c-cream);
+      color: var(--c-ink);
+      border: 2px solid var(--c-ink);
+      box-shadow: 2px 2px 0 0 var(--c-ink);
+      cursor: pointer;
+      line-height: 1.4;
+      touch-action: manipulation;
+    }
+
+    .quiz-option-btn:hover:not(:disabled) {
+      background: var(--c-mustard);
+    }
+
+    .quiz-option-btn.correct {
+      background: var(--c-green);
+      color: #ffffff;
+    }
+
+    .quiz-option-btn.wrong {
+      background: var(--c-red);
+      color: #ffffff;
+    }
+
+    .quiz-option-btn:disabled {
+      cursor: default;
+    }
+
+    .quiz-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 2px solid var(--c-ink);
+    }
+
+    .quiz-score-badge {
+      font-size: 10px;
+      font-weight: bold;
+      color: var(--c-blue);
+    }
+
+    .quiz-result-banner {
+      background: var(--c-blue);
+      color: #ffffff;
+      border: 3px solid var(--c-ink);
+      padding: 10px;
+      margin-bottom: 12px;
+      font-size: 9px;
+      display: none;
+    }
+
+    .quiz-result-banner.visible {
+      display: block;
+    }
+
+    .credits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .credit-card {
+      background: var(--c-sand);
+      border: 2px solid var(--c-ink);
+      border-left: 6px solid var(--c-blue);
+      padding: 8px;
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .credit-card .member-name {
+      color: var(--c-blue);
+      font-weight: bold;
+      display: block;
+    }
+
+    .credit-card .member-reg {
+      color: var(--c-ink);
+      font-size: 8px;
+    }
+
+    .source-list {
+      list-style-type: square;
+      padding-left: 18px;
+      font-size: 8px;
+      line-height: 1.6;
+    }
+
+    .source-list li {
+      margin-bottom: 8px;
+    }
+
+    .source-list a {
+      color: var(--c-blue);
+      text-decoration: underline;
+    }
+
+    footer {
+      font-size: 8px;
+      text-align: center;
+      padding: 14px;
+      background: var(--c-cream);
+      border: 3px solid var(--c-ink);
+      box-shadow: 4px 4px 0 0 var(--c-ink);
+      margin-top: 24px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="cursor-zoom-enabled">
+  <!-- Full-screen confetti overlay -->
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <div class="page-wrapper">
+    <div class="tricolor-bar" aria-hidden="true">
+      <div class="tricolor-blue"></div>
+      <div class="tricolor-white"></div>
+      <div class="tricolor-red"></div>
+    </div>
+
+    <header>
+      <div class="title-group">
+        <span class="edition-tag">EDITION ARCADE • 1987 — 2025</span>
+        <h1 id="ui-title">Histoire du jeu vidéo en France</h1>
+        <span style="font-size: 8px; color: var(--c-blue);" id="ui-subtitle">Frise chronologique interactive (1987-2025)</span>
+      </div>
+      <div class="header-controls">
+        <button class="pixel-btn active" id="zoom-toggle-btn" aria-label="Activer le zoom au survol">Loupe: ON</button>
+        <button class="pixel-btn" id="lang-btn" aria-label="Changer de langue">EN</button>
+        <button class="pixel-btn" id="sound-btn" aria-label="Activer ou couper le son">Audio: OFF</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="canvas-container" class="zoom-target">
+        <canvas id="gameCanvas" width="900" height="290" role="img" aria-label="Jeu pixel art chronologique"></canvas>
+      </div>
+
+      <div class="interaction-bar">
+        <div class="keys-legend" id="ui-legend">
+          [Flèches / A-D]: Marcher | [Espace]: Sauter | [Entrée]: Inspecter | Visitez les 10 étapes puis montez sur le podium !
+        </div>
+
+        <div class="mobile-controls">
+          <div class="dpad-cluster">
+            <button class="pixel-btn" id="btn-left" aria-label="Gauche">&lt; GAUCHE</button>
+            <button class="pixel-btn" id="btn-right" aria-label="Droite">DROITE &gt;</button>
+          </div>
+          <div class="action-cluster">
+            <button class="pixel-btn btn-jump" id="btn-jump" aria-label="Sauter">SAUT</button>
+            <button class="pixel-btn btn-inspect" id="btn-action" aria-label="Inspecter la borne">OUVRIR</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline strip with years AND titles -->
+      <div class="timeline-strip" id="timeline-strip" aria-label="Sélecteur d'étapes chronologiques"></div>
+
+      <!-- Cartridge shelf -->
+      <section class="pixel-box shelf-container zoom-target" aria-labelledby="shelf-title">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+          <h2 id="shelf-title">Étagère de cartouches</h2>
+          <span id="shelf-counter" style="font-size: 9px; font-weight: bold;">0 / 10</span>
+        </div>
+        <div class="shelf-grid" id="shelf-grid"></div>
+      </section>
+
+      <!-- Detailed Zoomable Map section -->
+      <section class="pixel-box zoom-target" aria-labelledby="map-title">
+        <h2 id="map-title">Géographie des studios français & Zoom Paris</h2>
+        <div class="map-grid-container">
+          <div class="map-viewport-wrapper">
+            <canvas id="franceMapCanvas" width="350" height="340" role="img" aria-label="Carte zoomable des studios de développement en France"></canvas>
+            <div class="map-zoom-toolbar">
+              <div class="map-zoom-btns">
+                <button class="map-zoom-btn" id="map-zoom-in" aria-label="Zoomer sur la carte">+</button>
+                <button class="map-zoom-btn" id="map-zoom-out" aria-label="Dézoomer sur la carte">-</button>
+                <button class="map-zoom-btn" id="map-zoom-paris" aria-label="Centrer sur Paris">PARIS</button>
+                <button class="map-zoom-btn" id="map-zoom-reset" aria-label="Réinitialiser la carte">100%</button>
+              </div>
+              <span class="map-zoom-level" id="map-zoom-label">1.0x</span>
+            </div>
+          </div>
+
+          <div class="city-details" id="city-details-box">
+            <div>
+              <p id="city-details-prompt">Cliquez sur une ville (ou cliquez sur PARIS pour zoomer) afin d'explorer ses studios et jeux créés.</p>
+              <div id="city-details-content" style="display: none;">
+                <p><strong id="city-name-display" style="color: var(--c-red); font-size: 10px;"></strong></p>
+                <p style="margin-top: 6px; font-size: 8px; color: var(--c-blue);" id="city-desc-display"></p>
+                <p style="margin-top: 8px;" id="city-games-display"></p>
+              </div>
+            </div>
+
+            <div class="paris-highlight-box">
+              <span class="paris-highlight-title" id="paris-box-title">FOCUS CAPITALE : PARIS & ÎLE-DE-FRANCE</span>
+              <span id="paris-box-desc">Berceau historique du jeu vidéo français (Lankhor, ERE Informatique, Delphine Software, Quantic Dream, Dontnod). Utilisez + ou le bouton PARIS pour inspecter la Seine et ses quartiers.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pixel-box zoom-target" aria-labelledby="credits-title">
+        <h2 id="credits-title">Crédits de l'équipe</h2>
+        <div class="credits-grid">
+          <div class="credit-card">
+            <span class="member-name">Prasurjya</span>
+            <span class="member-reg">RA2611003010681</span>
+          </div>
+          <div class="credit-card">
+            <span class="member-name">Apurva</span>
+            <span class="member-reg">RA2611003010679</span>
+          </div>
+          <div class="credit-card">
+            <span class="member-name">Vaishnavan</span>
+            <span class="member-reg">RA2611003010581</span>
+          </div>
+          <div class="credit-card">
+            <span class="member-name">Lakshya</span>
+            <span class="member-reg">RA2611003010558</span>
+          </div>
+          <div class="credit-card">
+            <span class="member-name">Samar</span>
+            <span class="member-reg">RA2611003010588</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sources section -->
+      <section class="pixel-box zoom-target" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources documentaires</h2>
+        <ul class="source-list" id="sources-container"></ul>
+      </section>
+
+      <!-- Timed & Blurred Quiz section -->
+      <section class="pixel-box zoom-target" id="quiz-section" aria-labelledby="quiz-title">
+        <div class="quiz-header-row">
+          <h2 id="quiz-title">Quiz sur les jeux de la frise</h2>
+          <span class="quiz-timer-badge" id="quiz-timer-display">Temps : 01:00</span>
+        </div>
+
+        <div class="quiz-result-banner" id="quiz-result-banner"></div>
+
+        <div class="quiz-wrapper">
+          <div class="quiz-overlay" id="quiz-overlay">
+            <p id="quiz-overlay-text">Vous disposez de 60 secondes pour répondre aux 6 questions sur les jeux de la frise.</p>
+            <button class="pixel-btn quiz-start-btn" id="quiz-start-btn">Démarrer le quiz (1 min)</button>
+          </div>
+
+          <div id="quiz-container" class="quiz-blurred"></div>
+        </div>
+
+        <div class="quiz-footer">
+          <span class="quiz-score-badge" id="quiz-score-display">Score : 0 / 6</span>
+          <button class="pixel-btn" id="quiz-reset-btn">Recommencer le quiz</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Projet scolaire : Histoire du jeu vidéo en France</p>
+      <p style="margin-top: 4px;">Palette rétro 8-bit • Carte interactive zoomable • Rendu Canvas.</p>
+    </footer>
+  </div>
+
+  <!-- Stop Info Modal Dialog -->
+  <dialog id="stop-dialog" aria-modal="true" aria-labelledby="dialog-title">
+    <div class="dialog-header">
+      <div>
+        <span id="dialog-year" style="font-size: 9px; color: var(--c-red); font-weight: bold;"></span>
+        <h2 id="dialog-title" style="margin: 0; border: none; font-size: 12px;"></h2>
+      </div>
+      <button class="pixel-btn" id="dialog-close-btn" aria-label="Fermer la fenêtre">X</button>
+    </div>
+
+    <div class="dialog-meta" id="dialog-meta"></div>
+
+    <div class="dialog-image-box">
+      <img id="dialog-img" src="" alt="" onerror="this.style.display='none'; document.getElementById('dialog-img-fallback').style.display='flex';">
+      <div id="dialog-img-fallback" class="image-placeholder-fallback">
+        image a ajouter
+      </div>
+    </div>
+    <div class="image-credit" id="dialog-credit"></div>
+
+    <div class="dialog-section">
+      <span class="dialog-section-title" id="lbl-desc">Description</span>
+      <p id="dialog-desc"></p>
+    </div>
+
+    <div class="dialog-section">
+      <span class="dialog-section-title" id="lbl-impact-fr">Impact en France</span>
+      <p id="dialog-impact-fr"></p>
+    </div>
+
+    <div class="dialog-section">
+      <span class="dialog-section-title" id="lbl-impact-intl">Impact international</span>
+      <p id="dialog-impact-intl"></p>
+    </div>
+
+    <div class="dialog-source">
+      <span id="lbl-source">Source :</span> <a id="dialog-source-link" href="#" target="_blank" rel="noopener noreferrer">Lien vérifié</a>
+    </div>
+  </dialog>
+
+  <!-- Victory Screen Dialog -->
+  <dialog id="victory-dialog" aria-modal="true" aria-labelledby="victory-title">
+    <div class="victory-banner">
+      <span style="font-size: 8px; letter-spacing: 1px;">★ 1987 — 2025 ★</span>
+      <h2 id="victory-title">VICTOIRE !</h2>
+      <p id="victory-subtitle" style="font-size: 8px; color: #f4ecd8;">PODIUM DE L'HISTOIRE DU JEU VIDÉO FRANÇAIS</p>
+    </div>
+
+    <div class="victory-stats-box" id="victory-body-text">
+      Félicitations ! Vous avez découvert les 10 jeux majeurs de l'histoire française, collecté toutes les cartouches et atteint le podium final. La route est désormais libre !
+    </div>
+
+    <div class="victory-actions">
+      <button class="pixel-btn" style="background: var(--c-mustard);" id="victory-quiz-btn">Aller au Quiz</button>
+      <button class="pixel-btn" id="victory-confetti-btn">Relancer Confettis</button>
+      <button class="pixel-btn active" id="victory-close-btn">Continuer</button>
+    </div>
+  </dialog>
+
+  <script>
+    /**
+     * Primary timeline data reduced to 10 key stops.
+     * Descriptions strictly formatted to 20 words each.
+     */
+    const STOPS_DATA = [
+      {
+        id: 1,
+        slug: "manoir-de-mortevielle",
+        year: 1987,
+        shortTitle: "Mortevielle",
+        city: "Paris",
+        coords: { x: 185, y: 92 },
+        fr: {
+          title: "Le Manoir de Mortevielle",
+          studio: "Lankhor",
+          creator: "Bernard Grelaud, Bruno Gourier",
+          platform: "Atari ST, Amiga, Amstrad CPC, PC",
+          desc: "Dans un manoir enneigé isolé, le détective Jérôme Lange mène une enquête policière complexe mêlant interrogatoires poussés et synthèse vocale.",
+          impactFr: "Le titre utilise une synthèse vocale sur Atari ST, une première technique marquante pour la production micro-informatique française.",
+          impactIntl: "Le jeu est traduit en plusieurs langues et exporté en Europe sous le titre Mortville Manor.",
+          sourceName: "Notice BnF et dossier Lankhor",
+          sourceUrl: "https://catalogue.bnf.fr/ark:/12148/cb382498263",
+          credit: "Image : Lankhor / Éditeur d'origine, usage documentaire"
+        },
+        en: {
+          title: "Le Manoir de Mortevielle",
+          studio: "Lankhor",
+          creator: "Bernard Grelaud, Bruno Gourier",
+          platform: "Atari ST, Amiga, Amstrad CPC, PC",
+          desc: "Investigator Jerome Lange solves an isolated mansion murder through point-and-click questioning, pioneering computer voice synthesis during a blizzard storm.",
+          impactFr: "The game features hardware speech synthesis on Atari ST, a notable technical step for French computer software.",
+          impactIntl: "The release received translations across Europe under the title Mortville Manor.",
+          sourceName: "BnF record and Lankhor archives",
+          sourceUrl: "https://catalogue.bnf.fr/ark:/12148/cb382498263",
+          credit: "Image: Lankhor / Original publisher, fair educational use"
+        }
+      },
+      {
+        id: 2,
+        slug: "captain-blood",
+        year: 1988,
+        shortTitle: "Captain Blood",
+        city: "Paris",
+        coords: { x: 185, y: 92 },
+        fr: {
+          title: "Captain Blood",
+          studio: "ERE Informatique",
+          creator: "Philippe Ulrich, Didier Bouchon",
+          platform: "Atari ST, Amiga, Commodore 64, PC",
+          desc: "Un développeur piégé dans sa simulation spatiale recherche cinq clones extraterrestres en dialoguant via une interface originale de cent-vingt idéogrammes.",
+          impactFr: "Le jeu démontre la viabilité d'un système de communication symbolique sans phrases préécrites.",
+          impactIntl: "La bande originale intègre le morceau de Jean-Michel Jarre, Magnetic Fields Part 1, popularisant le titre sur le marché international.",
+          sourceName: "Dossier CNC et ERE Informatique",
+          sourceUrl: "https://www.cnc.fr/jeu-video",
+          credit: "Image : ERE Informatique / Exxos, usage documentaire"
+        },
+        en: {
+          title: "Captain Blood",
+          studio: "ERE Informatique",
+          creator: "Philippe Ulrich, Didier Bouchon",
+          platform: "Atari ST, Amiga, Commodore 64, PC",
+          desc: "A trapped coder navigates deep galaxies hunting duplicate clones by deciphering alien moods with an iconic pictorial symbol dialogue system.",
+          impactFr: "The project demonstrated an original non-textual icon language on home computers.",
+          impactIntl: "It featured Jean-Michel Jarre's track Magnetic Fields Part 1, securing broad European recognition.",
+          sourceName: "CNC Archives and ERE Informatique",
+          sourceUrl: "https://www.cnc.fr/jeu-video",
+          credit: "Image: ERE Informatique / Exxos, fair educational use"
+        }
+      },
+      {
+        id: 3,
+        slug: "another-world",
+        year: 1991,
+        shortTitle: "Another World",
+        city: "Paris",
+        coords: { x: 185, y: 92 },
+        fr: {
+          title: "Another World",
+          studio: "Delphine Software",
+          creator: "Éric Chahi",
+          platform: "Amiga, Atari ST, SNES, Mega Drive, PC",
+          desc: "Téléporté vers une planète hostile par un accélérateur défaillant, un scientifique survit grâce à des cinématiques vectorielles fluides et immersives.",
+          impactFr: "Le projet prouve qu'un jeu d'action cinématique complet peut être conçu et animé par un auteur unique.",
+          impactIntl: "Le titre entre dans la collection permanente du Museum of Modern Art (MoMA) de New York en 2012.",
+          sourceName: "Collection MoMA Architecture and Design",
+          sourceUrl: "https://www.moma.org/collection/works/164920",
+          credit: "Image : Delphine Software / Eric Chahi, usage documentaire"
+        },
+        en: {
+          title: "Another World",
+          studio: "Delphine Software",
+          creator: "Eric Chahi",
+          platform: "Amiga, Atari ST, SNES, Genesis, PC",
+          desc: "After an accidental laboratory explosion, Lester escapes strange alien beasts within cinematic rotoscoped flat-shaded polygonal environments crafted by one author.",
+          impactFr: "It proved that a cinematic narrative game could be developed and animated by a single programmer.",
+          impactIntl: "The game was acquired into the permanent collection of the Museum of Modern Art (MoMA) in 2012.",
+          sourceName: "MoMA Architecture and Design Collection",
+          sourceUrl: "https://www.moma.org/collection/works/164920",
+          credit: "Image: Delphine Software / Eric Chahi, fair educational use"
+        }
+      },
+      {
+        id: 4,
+        slug: "alone-in-the-dark",
+        year: 1992,
+        shortTitle: "Alone in Dark",
+        city: "Lyon",
+        coords: { x: 235, y: 205 },
+        fr: {
+          title: "Alone in the Dark",
+          studio: "Infogrames",
+          creator: "Frédérick Raynal",
+          platform: "PC (DOS), 3DO, Mac",
+          desc: "Deux enquêteurs arpentent le manoir cauchemardesque de Derceto, pionnier combinant des héros polygonaux tridimensionnels sur des angles de caméra fixes.",
+          impactFr: "Le succès de production installe durablement Infogrames et la région lyonnaise parmi les pôles majeurs du jeu vidéo européen.",
+          impactIntl: "Le Livre Guinness des records retient le titre comme le pionnier du genre survival horror en 3D.",
+          sourceName: "Guinness World Records Gamer Edition",
+          sourceUrl: "https://www.guinnessworldrecords.com/",
+          credit: "Image : Infogrames / Frédérick Raynal, usage documentaire"
+        },
+        en: {
+          title: "Alone in the Dark",
+          studio: "Infogrames",
+          creator: "Frederick Raynal",
+          platform: "PC (DOS), 3DO, Mac",
+          desc: "Investigating haunted Derceto mansion introduces pioneering survival horror mechanics through real-time polygonal figures navigating atmospheric, pre-rendered static cinematic camera angles.",
+          impactFr: "Its technical success established Infogrames and Lyon as key hubs in the European game industry.",
+          impactIntl: "Guinness World Records lists it as the earliest 3D survival horror video game.",
+          sourceName: "Guinness World Records Gamer Edition",
+          sourceUrl: "https://www.guinnessworldrecords.com/",
+          credit: "Image: Infogrames / Frederick Raynal, fair educational use"
+        }
+      },
+      {
+        id: 5,
+        slug: "rayman",
+        year: 1995,
+        shortTitle: "Rayman",
+        city: "Montpellier",
+        coords: { x: 205, y: 285 },
+        fr: {
+          title: "Rayman",
+          studio: "Ubisoft",
+          creator: "Michel Ancel, Frédéric Houde",
+          platform: "Atari Jaguar, PlayStation, Sega Saturn, PC",
+          desc: "Ce héros sans membres traverse des contrées colorées féeriques pour délivrer les Electoons captifs grâce à une superbe animation manuelle.",
+          impactFr: "Le succès de Rayman accélère la structuration d'Ubisoft et conduit à la création du studio Ubisoft Montpellier.",
+          impactIntl: "Le titre devient l'un des jeux les plus vendus de la PlayStation au Royaume-Uni avec plusieurs millions d'exemplaires.",
+          sourceName: "Données SELL et rapports financiers Ubisoft",
+          sourceUrl: "https://www.ubisoft.com/en-us/company/about-us",
+          credit: "Image : Ubisoft Entertainment SA, usage documentaire"
+        },
+        en: {
+          title: "Rayman",
+          studio: "Ubisoft",
+          creator: "Michel Ancel, Frederic Houde",
+          platform: "Atari Jaguar, PlayStation, Sega Saturn, PC",
+          desc: "A cheerful limbless hero runs across vivid whimsical worlds rescuing caged Electoons with expressive cartoon animation and demanding platforming challenges.",
+          impactFr: "The game prompted Ubisoft's growth and led to the formal founding of Ubisoft Montpellier.",
+          impactIntl: "Rayman became one of the top-selling PlayStation titles in the UK, exceeding multiple millions in global sales.",
+          sourceName: "SELL data and Ubisoft historical records",
+          sourceUrl: "https://www.ubisoft.com/en-us/company/about-us",
+          credit: "Image: Ubisoft Entertainment SA, fair educational use"
+        }
+      },
+      {
+        id: 6,
+        slug: "beyond-good-and-evil",
+        year: 2003,
+        shortTitle: "BG&E",
+        city: "Montpellier",
+        coords: { x: 205, y: 285 },
+        fr: {
+          title: "Beyond Good & Evil",
+          studio: "Ubisoft Montpellier",
+          creator: "Michel Ancel",
+          platform: "PlayStation 2, GameCube, Xbox, PC",
+          desc: "La photojournaliste intrépide Jade dénonce une conspiration extraterrestre martiale en alliant habilement infiltration furtive, prises de vue révélatrices et combats rythmés.",
+          impactFr: "Le jeu renforce la reconnaissance institutionnelle du jeu vidéo en France, Michel Ancel étant fait Chevalier des Arts et des Lettres en 2006.",
+          impactIntl: "Le titre reçoit trois nominations aux Game Developers Choice Awards 2004, dont celle du jeu de l'année.",
+          sourceName: "Game Developers Choice Awards Archive 2004",
+          sourceUrl: "https://gamechoiceawards.com/archive/gdca-4th-annual",
+          credit: "Image : Ubisoft Montpellier, usage documentaire"
+        },
+        en: {
+          title: "Beyond Good & Evil",
+          studio: "Ubisoft Montpellier",
+          creator: "Michel Ancel",
+          platform: "PlayStation 2, GameCube, Xbox, PC",
+          desc: "Martial artist and photojournalist Jade investigates corrupt military regimes on planet Hillys using stealth, camera evidence collection, and hovercraft traversal.",
+          impactFr: "The game contributed to public cultural recognition, with Michel Ancel receiving the Chevalier des Arts et des Lettres distinction in 2006.",
+          impactIntl: "It earned three nominations at the 2004 Game Developers Choice Awards, including Game of the Year.",
+          sourceName: "Game Developers Choice Awards 2004",
+          sourceUrl: "https://gamechoiceawards.com/archive/gdca-4th-annual",
+          credit: "Image: Ubisoft Montpellier, fair educational use"
+        }
+      },
+      {
+        id: 7,
+        slug: "dofus",
+        year: 2004,
+        shortTitle: "Dofus",
+        city: "Roubaix",
+        coords: { x: 192, y: 36 },
+        fr: {
+          title: "Dofus",
+          studio: "Ankama",
+          creator: "Anthony Roux, Camille Chafer, Emmanuel Darras",
+          platform: "PC, Mac, Linux (Technologie Flash)",
+          desc: "Ce jeu de rôle en ligne massivement multijoueur séduit des millions d'aventuriers grâce à des affrontements tactiques au tour par tour.",
+          impactFr: "Ankama développe autour du jeu un modèle transmédia autonome incluant mangas, dessins animés et produits dérivés conçus dans les Hauts-de-France.",
+          impactIntl: "Dofus dépasse les 10 millions de comptes créés dès la fin des années 2000, avec une implantation forte en Espagne et en Amérique latine.",
+          sourceName: "Dossier AFJV et rapports Ankama",
+          sourceUrl: "https://www.afjv.com/",
+          credit: "Image : Ankama Games, usage documentaire"
+        },
+        en: {
+          title: "Dofus",
+          studio: "Ankama",
+          creator: "Anthony Roux, Camille Chafer, Emmanuel Darras",
+          platform: "PC, Mac, Linux (Flash engine)",
+          desc: "An isometric tactical MMORPG where guild heroes chase mythical dragon eggs through strategic grid battles and an entirely community-driven market economy.",
+          impactFr: "Ankama built an independent transmedia ecosystem around the game, spanning published comics and television animation in Roubaix.",
+          impactIntl: "Dofus recorded over 10 million registered accounts by the late 2000s, with notable player communities in Spain and Latin America.",
+          sourceName: "AFJV industry records and Ankama releases",
+          sourceUrl: "https://www.afjv.com/",
+          credit: "Image: Ankama Games, fair educational use"
+        }
+      },
+      {
+        id: 8,
+        slug: "heavy-rain",
+        year: 2010,
+        shortTitle: "Heavy Rain",
+        city: "Paris",
+        coords: { x: 185, y: 92 },
+        fr: {
+          title: "Heavy Rain",
+          studio: "Quantic Dream",
+          creator: "David Cage",
+          platform: "PlayStation 3, PlayStation 4, PC",
+          desc: "Quatre protagonistes traquent un tueur d'enfants sous une pluie battante, influençant le destin tragique par des choix moraux irréversibles et intenses.",
+          impactFr: "Le projet bénéficie du crédit d'impôt jeu vidéo (CIJV) français et illustre la capacité technique des studios parisiens sur consoles HD.",
+          impactIntl: "Le titre remporte trois récompenses majeures aux BAFTA Games Awards 2011, dont Meilleure Histoire et Meilleure Musique.",
+          sourceName: "BAFTA Games Awards Winners Database 2011",
+          sourceUrl: "https://www.bafta.org/games/awards/2011",
+          credit: "Image : Quantic Dream / Sony Interactive Entertainment"
+        },
+        en: {
+          title: "Heavy Rain",
+          studio: "Quantic Dream",
+          creator: "David Cage",
+          platform: "PlayStation 3, PlayStation 4, PC",
+          desc: "Four desperate adults investigate the elusive Origami Killer across rain-soaked streets through motion-captured cinematic scenes and permanent consequence branching story paths.",
+          impactFr: "Supported by the French CIJV tax credit, it represented Paris-based high-budget console engineering.",
+          impactIntl: "Heavy Rain won three categories at the 2011 BAFTA Video Games Awards, including Story and Original Music.",
+          sourceName: "BAFTA Games Awards Winners Database 2011",
+          sourceUrl: "https://www.bafta.org/games/awards/2011",
+          credit: "Image: Quantic Dream / Sony Interactive Entertainment"
+        }
+      },
+      {
+        id: 9,
+        slug: "life-is-strange",
+        year: 2015,
+        shortTitle: "Life is Strange",
+        city: "Paris",
+        coords: { x: 185, y: 92 },
+        fr: {
+          title: "Life is Strange",
+          studio: "Dontnod Entertainment",
+          creator: "Michel Koch, Raoul Barbet, Jean-Luc Cano",
+          platform: "PC, PS3, PS4, Xbox 360, Xbox One",
+          desc: "L'étudiante Max Caulfield découvre un étrange pouvoir temporel, modifiant les événements scolaires dramatiques tout en affrontant le redoutable effet papillon.",
+          impactFr: "Dontnod confirme la pérennité d'un grand studio parisien indépendant coté en bourse axé sur la narration contemporaine.",
+          impactIntl: "Le jeu remporte le BAFTA Games Award de la Meilleure Histoire en 2016 et dépasse 3 millions de joueurs uniques dès 2017.",
+          sourceName: "BAFTA Games Awards Database 2016",
+          sourceUrl: "https://www.bafta.org/games/awards/2016",
+          credit: "Image : Dontnod Entertainment / Square Enix Europe"
+        },
+        en: {
+          title: "Life is Strange",
+          studio: "Dontnod Entertainment",
+          creator: "Michel Koch, Raoul Barbet, Jean-Luc Cano",
+          platform: "PC, PS3, PS4, Xbox 360, Xbox One",
+          desc: "Photography student Max rewinds immediate timelines in seaside Arcadia Bay, facing tragic teenage dilemmas and dangerous unintended temporal ripple consequences.",
+          impactFr: "The title confirmed Dontnod as an independent publicly traded studio in Paris specialized in narrative production.",
+          impactIntl: "It won the BAFTA Games Award for Best Story in 2016 and surpassed 3 million unique players by 2017.",
+          sourceName: "BAFTA Games Awards 2016",
+          sourceUrl: "https://www.bafta.org/games/awards/2016",
+          credit: "Image: Dontnod Entertainment / Square Enix Europe"
+        }
+      },
+      {
+        id: 10,
+        slug: "clair-obscur-expedition-33",
+        year: 2025,
+        shortTitle: "Expedition 33",
+        city: "Montpellier",
+        coords: { x: 205, y: 285 },
+        fr: {
+          title: "Clair Obscur: Expedition 33",
+          studio: "Sandfall Interactive",
+          creator: "Guillaume Broche",
+          platform: "PlayStation 5, Xbox Series, PC",
+          desc: "Une troupe héroïque affronte la mystique Peintresse pour stopper l'effacement cyclique des humains via des combats au tour par tour rythmés.",
+          impactFr: "Sandfall Interactive incarne le renouvellement de l'écosystème indépendant à Montpellier, fondé par d'anciens concepteurs d'Ubisoft.",
+          impactIntl: "Développé sous Unreal Engine 5 et édité par Kepler Interactive, le titre a été dévoilé lors du Xbox Games Showcase mondial en juin 2024.",
+          sourceName: "Annonce officielle Xbox Showcase / Sandfall",
+          sourceUrl: "https://www.sandfall.co/",
+          credit: "Image : Sandfall Interactive / Kepler Interactive"
+        },
+        en: {
+          title: "Clair Obscur: Expedition 33",
+          studio: "Sandfall Interactive",
+          creator: "Guillaume Broche",
+          platform: "PlayStation 5, Xbox Series, PC",
+          desc: "Brave explorers journey to destroy the cycle-ending Paintress through innovative reactive turn-based battles blending dynamic dodges and precise counter strikes.",
+          impactFr: "Sandfall Interactive highlights new independent production in Montpellier, created by former Ubisoft staff.",
+          impactIntl: "Built with Unreal Engine 5 and published by Kepler Interactive, it was unveiled at the global Xbox Games Showcase in June 2024.",
+          sourceName: "Xbox Games Showcase Sandfall official note",
+          sourceUrl: "https://www.sandfall.co/",
+          credit: "Image: Sandfall Interactive / Kepler Interactive"
+        }
+      }
+    ];
+
+    /**
+     * Quiz data built strictly from the 20-word game descriptions.
+     */
+    const QUIZ_DATA = [
+      {
+        fr: {
+          q: "1. Dans quel jeu le détective Jérôme Lange mène-t-il une enquête avec synthèse vocale dans un manoir enneigé ?",
+          options: ["Le Manoir de Mortevielle", "Alone in the Dark", "Heavy Rain", "Captain Blood"],
+          answer: 0
+        },
+        en: {
+          q: "1. In which game does investigator Jerome Lange solve a snowy mansion murder using voice synthesis?",
+          options: ["Le Manoir de Mortevielle", "Alone in the Dark", "Heavy Rain", "Captain Blood"],
+          answer: 0
+        }
+      },
+      {
+        fr: {
+          q: "2. Quel jeu utilise une interface de cent-vingt idéogrammes pour dialoguer avec des extraterrestres ?",
+          options: ["Another World", "Captain Blood", "Dofus", "Beyond Good & Evil"],
+          answer: 1
+        },
+        en: {
+          q: "2. Which game features a pictorial symbol dialogue system to hunt duplicate clones in deep galaxies?",
+          options: ["Another World", "Captain Blood", "Dofus", "Beyond Good & Evil"],
+          answer: 1
+        }
+      },
+      {
+        fr: {
+          q: "3. Quel jeu de plates-formes met en scène un héros sans membres délivrant les Electoons ?",
+          options: ["Clair Obscur: Expedition 33", "Another World", "Rayman", "Dofus"],
+          answer: 2
+        },
+        en: {
+          q: "3. Which platformer follows a cheerful limbless hero rescuing caged Electoons across whimsical worlds?",
+          options: ["Clair Obscur: Expedition 33", "Another World", "Rayman", "Dofus"],
+          answer: 2
+        }
+      },
+      {
+        fr: {
+          q: "4. Quelle photojournaliste dénonce une conspiration en alliant infiltration et prises de vue ?",
+          options: ["Max Caulfield (Life is Strange)", "Jade (Beyond Good & Evil)", "Lester (Another World)", "Jérôme Lange (Mortevielle)"],
+          answer: 1
+        },
+        en: {
+          q: "4. Which photojournalist investigates corrupt regimes using stealth and camera evidence collection?",
+          options: ["Max Caulfield (Life is Strange)", "Jade (Beyond Good & Evil)", "Lester (Another World)", "Jerome Lange (Mortevielle)"],
+          answer: 1
+        }
+      },
+      {
+        fr: {
+          q: "5. Dans quel jeu l'étudiante Max Caulfield modifie-t-elle les événements grâce à un pouvoir temporel ?",
+          options: ["Heavy Rain", "Another World", "Life is Strange", "Alone in the Dark"],
+          answer: 2
+        },
+        en: {
+          q: "5. In which game does photography student Max rewind timelines in seaside Arcadia Bay?",
+          options: ["Heavy Rain", "Another World", "Life is Strange", "Alone in the Dark"],
+          answer: 2
+        }
+      },
+      {
+        fr: {
+          q: "6. Quelle entité la troupe héroïque de Clair Obscur: Expedition 33 affronte-t-elle au tour par tour ?",
+          options: ["Mister Dark", "La Peintresse", "Le Tueur aux origamis", "Le manoir de Derceto"],
+          answer: 1
+        },
+        en: {
+          q: "6. Which entity do explorers journey to destroy in Clair Obscur: Expedition 33?",
+          options: ["Mister Dark", "The Paintress", "The Origami Killer", "Derceto Mansion"],
+          answer: 1
+        }
+      }
+    ];
+
+    const CITIES_DATA = [
+      {
+        name: "Paris",
+        x: 185,
+        y: 92,
+        isCapital: true,
+        descFr: "Capitale française • Traversée par la Seine • Pôle historique (1987–2015)",
+        descEn: "French Capital • Crossed by the Seine • Historic Hub (1987–2015)",
+        games: ["Le Manoir de Mortevielle", "Captain Blood", "Another World", "Heavy Rain", "Life is Strange"]
+      },
+      {
+        name: "Lyon",
+        x: 235,
+        y: 205,
+        isCapital: false,
+        descFr: "Auvergne-Rhône-Alpes • Berceau de la 3D polygonale (Infogrames)",
+        descEn: "Auvergne-Rhône-Alpes • Birthplace of 3D Survival Horror (Infogrames)",
+        games: ["Alone in the Dark"]
+      },
+      {
+        name: "Montpellier",
+        x: 205,
+        y: 285,
+        isCapital: false,
+        descFr: "Occitanie • Pôle majeur d'Ubisoft et de Sandfall Interactive",
+        descEn: "Occitanie • Major hub for Ubisoft and Sandfall Interactive",
+        games: ["Rayman", "Beyond Good & Evil", "Clair Obscur: Expedition 33"]
+      },
+      {
+        name: "Roubaix",
+        x: 192,
+        y: 36,
+        isCapital: false,
+        descFr: "Hauts-de-France • Siège transmédia d'Ankama Games",
+        descEn: "Hauts-de-France • Transmedia headquarters of Ankama Games",
+        games: ["Dofus"]
+      }
+    ];
+
+    // State
+    let currentLang = "fr";
+    let soundEnabled = false;
+    let cursorZoomEnabled = true;
+    let audioCtx = null;
+    const visitedStops = new Set();
+    let currentStopIndex = 0;
+    let victoryCelebrated = false;
+
+    // Quiz state & 1-minute countdown
+    let quizAnswers = new Array(QUIZ_DATA.length).fill(null);
+    let quizStarted = false;
+    let quizFinished = false;
+    let quizTimeRemaining = 60;
+    let quizTimerInterval = null;
+
+    // Canvas & physical constants
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const stopsSpacing = 200;
+    const pathStartX = 110;
+    // Podium placed right after the 10th checkpoint
+    const podiumX = pathStartX + STOPS_DATA.length * stopsSpacing + 20;
+    const totalTrackWidth = podiumX + 180;
+    const GROUND_Y = 202;
+
+    // Movement state & physics
+    const keys = {
+      left: false,
+      right: false
+    };
+
+    const player = {
+      x: pathStartX,
+      y: GROUND_Y,
+      vy: 0,
+      isGrounded: true,
+      facing: 1,
+      isWalking: false,
+      walkFrame: 0,
+      walkTimer: 0,
+      idleTimer: 0,
+      scarfPhase: 0,
+      squashX: 1,
+      squashY: 1,
+      hitTimer: 0,
+      alertBannerTimer: 0,
+      moveSpeed: 4.0,
+      jumpForce: -8.8,
+      gravity: 0.45
+    };
+
+    let cameraX = 0;
+
+    // Full-screen Confetti System
+    const confettiCanvas = document.getElementById("confettiCanvas");
+    const cctx = confettiCanvas.getContext("2d");
+    const confettiPieces = [];
+
+    function resizeConfettiCanvas() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeConfettiCanvas);
+    resizeConfettiCanvas();
+
+    function launchConfetti(count = 150) {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reducedMotion) return;
+
+      const palette = ["#c8372d", "#e0a526", "#3f8f4f", "#1d2b53", "#ffffff", "#3a7bd5"];
+      for (let i = 0; i < count; i++) {
+        confettiPieces.push({
+          x: Math.random() * confettiCanvas.width,
+          y: -10 - Math.random() * 220,
+          vx: (Math.random() - 0.5) * 4.5,
+          vy: 2.2 + Math.random() * 3.8,
+          w: 6 + Math.floor(Math.random() * 6),
+          h: 6 + Math.floor(Math.random() * 6),
+          color: palette[Math.floor(Math.random() * palette.length)],
+          wobble: Math.random() * Math.PI * 2,
+          wobbleSpeed: 0.06 + Math.random() * 0.08
+        });
+      }
+    }
+
+    function updateAndRenderConfetti() {
+      cctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      for (let i = confettiPieces.length - 1; i >= 0; i--) {
+        const p = confettiPieces[i];
+        p.wobble += p.wobbleSpeed;
+        p.x += p.vx + Math.sin(p.wobble) * 1.1;
+        p.y += p.vy;
+
+        cctx.fillStyle = p.color;
+        cctx.fillRect(Math.floor(p.x), Math.floor(p.y), p.w, p.h);
+
+        // Dark pixel outline on larger confetti squares
+        if (p.w >= 9) {
+          cctx.strokeStyle = "#14141f";
+          cctx.lineWidth = 1;
+          cctx.strokeRect(Math.floor(p.x), Math.floor(p.y), p.w, p.h);
+        }
+
+        if (p.y > confettiCanvas.height + 20) {
+          confettiPieces.splice(i, 1);
+        }
+      }
+    }
+
+    // Ground dust particles (on jump, landing, and teleport)
+    const particles = [];
+
+    function spawnGroundParticles(x, y, count, customColor = null) {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reducedMotion) return;
+
+      for (let i = 0; i < count; i++) {
+        const dir = i % 2 === 0 ? -1 : 1;
+        particles.push({
+          x: x + (Math.random() * 10 - 5),
+          y: y - 2,
+          vx: dir * (0.8 + Math.random() * 2.0),
+          vy: -(0.7 + Math.random() * 1.6),
+          size: Math.random() > 0.4 ? 4 : 3,
+          life: 16 + Math.floor(Math.random() * 12),
+          color: customColor || (i % 3 === 0 ? "#f4ecd8" : "#cfc2a0")
+        });
+      }
+    }
+
+    function updateParticles() {
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.08;
+        p.life--;
+        if (p.life <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+    }
+
+    function renderParticles() {
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        ctx.fillStyle = p.color;
+        ctx.fillRect(Math.floor(p.x), Math.floor(p.y), p.size, p.size);
+      }
+    }
+
+    // Obstacles coming from the right side: cars (road) and birds (air)
+    const obstacles = [];
+    let obstacleSpawnTimer = 90;
+
+    function allCheckpointsCompleted() {
+      return visitedStops.size >= STOPS_DATA.length;
+    }
+
+    function getSpeedMultiplier() {
+      // Base speed starts at 2.5x and increases by 0.5x for every checkpoint visited
+      return 2.5 + visitedStops.size * 0.5;
+    }
+
+    function getObstacleSpeed() {
+      // Reference unit speed = 0.7 px/frame, multiplied by 2.5x + 0.5x per checkpoint
+      return 0.7 * getSpeedMultiplier();
+    }
+
+    function spawnObstacle() {
+      if (allCheckpointsCompleted()) return;
+
+      const isBird = Math.random() < 0.45;
+      const spawnX = Math.min(podiumX - 40, cameraX + canvas.width + 50);
+
+      if (isBird) {
+        obstacles.push({
+          type: "bird",
+          x: spawnX,
+          y: GROUND_Y - 34,
+          w: 22,
+          h: 14,
+          wingFrame: 0,
+          wingTimer: 0
+        });
+      } else {
+        const carColors = ["#c8372d", "#1d2b53", "#e0a526"];
+        const color = carColors[Math.floor(Math.random() * carColors.length)];
+        obstacles.push({
+          type: "car",
+          x: spawnX,
+          y: GROUND_Y,
+          w: 36,
+          h: 18,
+          color: color,
+          wheelFrame: 0
+        });
+      }
+    }
+
+    function playLoseSound() {
+      if (!soundEnabled) return;
+      playBeep(392.00, 0.14, "sawtooth"); // G4
+      setTimeout(() => playBeep(329.63, 0.14, "sawtooth"), 150); // E4
+      setTimeout(() => playBeep(261.63, 0.16, "sawtooth"), 300); // C4
+      setTimeout(() => playBeep(196.00, 0.36, "sawtooth"), 470); // G3
+    }
+
+    function playVictoryMusic() {
+      if (!soundEnabled) return;
+      // Upbeat 8-bit victory fanfare melody
+      const notes = [
+        { f: 523.25, t: 0, d: 0.11 },    // C5
+        { f: 523.25, t: 120, d: 0.11 },  // C5
+        { f: 523.25, t: 240, d: 0.11 },  // C5
+        { f: 659.25, t: 360, d: 0.24 },  // E5
+        { f: 587.33, t: 630, d: 0.16 },  // D5
+        { f: 659.25, t: 810, d: 0.16 },  // E5
+        { f: 783.99, t: 990, d: 0.42 },  // G5
+        { f: 1046.50, t: 1450, d: 0.55 } // C6
+      ];
+      notes.forEach(n => {
+        setTimeout(() => playBeep(n.f, n.d, "square"), n.t);
+      });
+    }
+
+    function teleportToEarlierCheckpoint() {
+      let nearestIdx = 0;
+      let bestDist = Infinity;
+      STOPS_DATA.forEach((s, i) => {
+        const sx = pathStartX + i * stopsSpacing;
+        const d = Math.abs(player.x - sx);
+        if (d < bestDist) {
+          bestDist = d;
+          nearestIdx = i;
+        }
+      });
+
+      const targetIdx = Math.max(0, nearestIdx - 1);
+      const targetX = pathStartX + targetIdx * stopsSpacing;
+
+      spawnGroundParticles(player.x, player.y, 10, "#c8372d");
+
+      player.x = targetX;
+      player.y = GROUND_Y;
+      player.vy = 0;
+      player.isGrounded = true;
+      player.hitTimer = 45;
+      player.alertBannerTimer = 95;
+      currentStopIndex = targetIdx;
+
+      spawnGroundParticles(player.x, GROUND_Y + 8, 12, "#e0a526");
+      updateTimelineStripSelection();
+    }
+
+    function updateObstacles() {
+      // Stop all obstacles immediately once 10 checkpoints are completed
+      if (allCheckpointsCompleted()) {
+        if (obstacles.length > 0) {
+          obstacles.length = 0;
+        }
+        return;
+      }
+
+      const currentSpeed = getObstacleSpeed();
+
+      obstacleSpawnTimer--;
+      if (obstacleSpawnTimer <= 0 && obstacles.length < 3) {
+        spawnObstacle();
+        const minGap = Math.max(115, 220 - visitedStops.size * 10);
+        obstacleSpawnTimer = minGap + Math.floor(Math.random() * 75);
+      }
+
+      for (let i = obstacles.length - 1; i >= 0; i--) {
+        const obs = obstacles[i];
+        obs.x -= currentSpeed;
+
+        if (obs.type === "bird") {
+          obs.wingTimer++;
+          if (obs.wingTimer > 12) {
+            obs.wingFrame = obs.wingFrame === 0 ? 1 : 0;
+            obs.wingTimer = 0;
+          }
+        } else {
+          obs.wheelFrame = (obs.wheelFrame + 1) % 16;
+        }
+
+        const pLeft = player.x - 6;
+        const pRight = player.x + 6;
+        const pTop = player.y - 24;
+        const pBottom = player.y + 8;
+
+        const oLeft = obs.x;
+        const oRight = obs.x + obs.w;
+        const oTop = obs.y - obs.h;
+        const oBottom = obs.y;
+
+        if (
+          player.hitTimer <= 0 &&
+          pRight > oLeft &&
+          pLeft < oRight &&
+          pBottom > oTop &&
+          pTop < oBottom
+        ) {
+          obstacles.splice(i, 1);
+          playLoseSound();
+          teleportToEarlierCheckpoint();
+          continue;
+        }
+
+        if (obs.x + obs.w < -40 || obs.x < cameraX - 160) {
+          obstacles.splice(i, 1);
+        }
+      }
+
+      if (player.hitTimer > 0) {
+        player.hitTimer--;
+      }
+      if (player.alertBannerTimer > 0) {
+        player.alertBannerTimer--;
+      }
+    }
+
+    function drawPixelCar(obs) {
+      const x = Math.floor(obs.x);
+      const y = Math.floor(obs.y);
+
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x + 2, y - 2, obs.w - 4, 2);
+
+      ctx.fillStyle = obs.color;
+      ctx.fillRect(x, y - 11, obs.w, 8);
+      ctx.strokeStyle = "#14141f";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x, y - 11, obs.w, 8);
+
+      ctx.fillStyle = obs.color;
+      ctx.fillRect(x + 8, y - 18, 20, 7);
+      ctx.strokeRect(x + 8, y - 18, 20, 7);
+
+      ctx.fillStyle = "#f4ecd8";
+      ctx.fillRect(x + 10, y - 16, 7, 5);
+      ctx.fillRect(x + 19, y - 16, 7, 5);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(x - 1, y - 9, 3, 3);
+
+      ctx.fillStyle = "#c8372d";
+      ctx.fillRect(x + obs.w - 2, y - 9, 2, 3);
+
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x + 4, y - 5, 7, 5);
+      ctx.fillRect(x + 25, y - 5, 7, 5);
+      ctx.fillStyle = "#f4ecd8";
+      const hubShift = obs.wheelFrame < 8 ? 0 : 1;
+      ctx.fillRect(x + 6 + hubShift, y - 4, 2, 2);
+      ctx.fillRect(x + 27 + hubShift, y - 4, 2, 2);
+    }
+
+    function drawPixelBird(obs) {
+      const x = Math.floor(obs.x);
+      const y = Math.floor(obs.y);
+
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x + 4, y - 10, 14, 7);
+      ctx.fillStyle = "#f4ecd8";
+      ctx.fillRect(x + 6, y - 8, 10, 4);
+
+      ctx.fillStyle = "#1d2b53";
+      ctx.fillRect(x + 2, y - 12, 6, 6);
+      ctx.fillStyle = "#e0a526";
+      ctx.fillRect(x - 2, y - 10, 4, 3);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(x + 4, y - 11, 2, 2);
+
+      ctx.fillStyle = "#1d2b53";
+      ctx.fillRect(x + 18, y - 11, 4, 4);
+
+      ctx.fillStyle = "#c8372d";
+      if (obs.wingFrame === 0) {
+        ctx.fillRect(x + 8, y - 16, 7, 6);
+      } else {
+        ctx.fillRect(x + 8, y - 5, 7, 6);
+      }
+    }
+
+    function renderObstacles() {
+      for (let i = 0; i < obstacles.length; i++) {
+        const obs = obstacles[i];
+        if (obs.type === "car") {
+          drawPixelCar(obs);
+        } else {
+          drawPixelBird(obs);
+        }
+      }
+    }
+
+    /**
+     * Draws the 3-Tier Victory Podium & Gold Trophy at the end of the 10 checkpoints
+     */
+    function drawVictoryPodium(x, y) {
+      const unlocked = allCheckpointsCompleted();
+
+      // Tricolor celebration banner poles behind podium
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x - 42, y - 78, 3, 78);
+      ctx.fillRect(x + 39, y - 78, 3, 78);
+
+      // Left French Flag
+      ctx.fillStyle = "#1d2b53";
+      ctx.fillRect(x - 39, y - 76, 8, 14);
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(x - 31, y - 76, 8, 14);
+      ctx.fillStyle = "#c8372d";
+      ctx.fillRect(x - 23, y - 76, 8, 14);
+      ctx.strokeStyle = "#14141f";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x - 39, y - 76, 24, 14);
+
+      // Right French Flag
+      ctx.fillStyle = "#1d2b53";
+      ctx.fillRect(x + 15, y - 76, 8, 14);
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(x + 23, y - 76, 8, 14);
+      ctx.fillStyle = "#c8372d";
+      ctx.fillRect(x + 31, y - 76, 8, 14);
+      ctx.strokeRect(x + 15, y - 76, 24, 14);
+
+      // Step 2 (Left - Silver/Cream)
+      ctx.fillStyle = "#f4ecd8";
+      ctx.fillRect(x - 42, y - 24, 28, 24);
+      ctx.strokeStyle = "#14141f";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x - 42, y - 24, 28, 24);
+
+      // Step 1 (Center - Tallest Gold/Mustard)
+      ctx.fillStyle = unlocked ? "#e0a526" : "#cfc2a0";
+      ctx.fillRect(x - 14, y - 36, 28, 36);
+      ctx.strokeRect(x - 14, y - 36, 28, 36);
+
+      // Step 3 (Right - Bronze/Red)
+      ctx.fillStyle = "#c8372d";
+      ctx.fillRect(x + 14, y - 16, 28, 16);
+      ctx.strokeRect(x + 14, y - 16, 28, 16);
+
+      // Podium rank numbers
+      ctx.fillStyle = "#14141f";
+      ctx.font = "8px 'Press Start 2P', monospace";
+      ctx.textAlign = "center";
+      ctx.fillText("2", x - 28, y - 8);
+      ctx.fillText("1", x, y - 16);
+      ctx.fillStyle = "#ffffff";
+      ctx.fillText("3", x + 28, y - 4);
+
+      // Gold Pixel Trophy Cup on top of #1 podium (floats slightly when unlocked)
+      const trophyY = y - 38;
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x - 6, trophyY - 4, 12, 4); // base
+      ctx.fillRect(x - 2, trophyY - 9, 4, 5);  // stem
+      ctx.fillStyle = unlocked ? "#e0a526" : "#888888";
+      ctx.fillRect(x - 8, trophyY - 21, 16, 12); // cup bowl
+      ctx.strokeStyle = "#14141f";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x - 8, trophyY - 21, 16, 12);
+      // Cup handles
+      ctx.fillRect(x - 11, trophyY - 19, 3, 6);
+      ctx.fillRect(x + 8, trophyY - 19, 3, 6);
+      // Shine highlight
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(x - 5, trophyY - 19, 2, 7);
+
+      // Label above podium
+      ctx.font = "8px 'Press Start 2P', monospace";
+      ctx.textAlign = "center";
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#14141f";
+      const label = unlocked ? "PODIUM ★" : "PODIUM (10/10)";
+      ctx.strokeText(label, x, y - 86);
+      ctx.fillStyle = unlocked ? "#e0a526" : "#ffffff";
+      ctx.fillText(label, x, y - 86);
+    }
+
+    const victoryDialog = document.getElementById("victory-dialog");
+
+    function triggerVictoryCelebration() {
+      victoryCelebrated = true;
+      playVictoryMusic();
+      launchConfetti(180);
+      spawnGroundParticles(player.x, player.y, 18, "#e0a526");
+
+      if (currentLang === "fr") {
+        document.getElementById("victory-title").textContent = "VICTOIRE !";
+        document.getElementById("victory-subtitle").textContent = "PODIUM DE L'HISTOIRE DU JEU VIDÉO FRANÇAIS";
+        document.getElementById("victory-body-text").textContent =
+          "Félicitations ! Vous avez découvert les 10 jeux majeurs de l'histoire française, collecté toutes les cartouches et atteint le podium final. Les obstacles sont désormais arrêtés !";
+        document.getElementById("victory-quiz-btn").textContent = "Aller au Quiz";
+        document.getElementById("victory-confetti-btn").textContent = "Relancer Confettis";
+        document.getElementById("victory-close-btn").textContent = "Continuer";
+      } else {
+        document.getElementById("victory-title").textContent = "VICTORY!";
+        document.getElementById("victory-subtitle").textContent = "FRENCH VIDEO GAME HISTORY PODIUM";
+        document.getElementById("victory-body-text").textContent =
+          "Congratulations! You explored all 10 landmark French games, collected every cartridge, and reached the final podium. All road and air obstacles have now stopped!";
+        document.getElementById("victory-quiz-btn").textContent = "Take the Quiz";
+        document.getElementById("victory-confetti-btn").textContent = "More Confetti";
+        document.getElementById("victory-close-btn").textContent = "Continue";
+      }
+
+      if (typeof victoryDialog.showModal === "function") {
+        if (!victoryDialog.open) victoryDialog.showModal();
+      } else {
+        victoryDialog.setAttribute("open", "");
+      }
+    }
+
+    document.getElementById("victory-close-btn").addEventListener("click", () => {
+      if (typeof victoryDialog.close === "function") victoryDialog.close();
+      else victoryDialog.removeAttribute("open");
+    });
+
+    document.getElementById("victory-confetti-btn").addEventListener("click", () => {
+      launchConfetti(160);
+      playVictoryMusic();
+    });
+
+    document.getElementById("victory-quiz-btn").addEventListener("click", () => {
+      if (typeof victoryDialog.close === "function") victoryDialog.close();
+      else victoryDialog.removeAttribute("open");
+      document.getElementById("quiz-section").scrollIntoView({ behavior: "smooth" });
+    });
+
+    // Procedural drifting pixel clouds
+    const clouds = [
+      { x: 50, y: 28, speed: 0.35, shape: 0 },
+      { x: 280, y: 52, speed: 0.22, shape: 1 },
+      { x: 520, y: 22, speed: 0.4, shape: 0 },
+      { x: 800, y: 44, speed: 0.28, shape: 2 },
+      { x: 1100, y: 28, speed: 0.32, shape: 1 },
+      { x: 1400, y: 58, speed: 0.25, shape: 0 },
+      { x: 1750, y: 34, speed: 0.38, shape: 2 },
+      { x: 2050, y: 30, speed: 0.3, shape: 1 }
+    ];
+
+    function drawPixelCloud(cx, cy, shape) {
+      ctx.fillStyle = "rgba(255,255,255,0.45)";
+      ctx.fillRect(cx + 2, cy + 14, 38, 4);
+      ctx.fillStyle = "#ffffff";
+      if (shape === 0) {
+        ctx.fillRect(cx + 8, cy, 24, 6);
+        ctx.fillRect(cx + 4, cy + 6, 32, 6);
+        ctx.fillRect(cx, cy + 12, 40, 6);
+      } else if (shape === 1) {
+        ctx.fillRect(cx + 12, cy, 16, 5);
+        ctx.fillRect(cx + 6, cy + 5, 28, 5);
+        ctx.fillRect(cx + 2, cy + 10, 36, 5);
+        ctx.fillRect(cx + 15, cy + 15, 42, 5);
+      } else {
+        ctx.fillRect(cx + 16, cy, 22, 4);
+        ctx.fillRect(cx + 6, cy + 4, 38, 5);
+        ctx.fillRect(cx, cy + 9, 48, 5);
+      }
+    }
+
+    function updateClouds() {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reducedMotion) return;
+
+      for (let i = 0; i < clouds.length; i++) {
+        clouds[i].x += clouds[i].speed;
+        if (clouds[i].x > totalTrackWidth + 60) {
+          clouds[i].x = -60;
+        }
+      }
+    }
+
+    function renderClouds() {
+      for (let i = 0; i < clouds.length; i++) {
+        drawPixelCloud(clouds[i].x, clouds[i].y, clouds[i].shape);
+      }
+    }
+
+    function playBeep(frequency, duration, type = "square") {
+      if (!soundEnabled) return;
+      try {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContextClass();
+        }
+        if (audioCtx.state === "suspended") {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playStepSound() {
+      playBeep(170, 0.03, "triangle");
+    }
+
+    function playJumpSound() {
+      if (!soundEnabled) return;
+      playBeep(320, 0.08, "square");
+      setTimeout(() => playBeep(480, 0.09, "square"), 40);
+    }
+
+    function playJingle() {
+      if (!soundEnabled) return;
+      playBeep(260, 0.07, "square");
+      setTimeout(() => playBeep(330, 0.07, "square"), 80);
+      setTimeout(() => playBeep(392, 0.09, "square"), 160);
+      setTimeout(() => playBeep(523, 0.18, "square"), 240);
+    }
+
+    function triggerJump() {
+      if (player.isGrounded) {
+        player.vy = player.jumpForce;
+        player.isGrounded = false;
+        player.squashX = 0.82;
+        player.squashY = 1.22;
+        spawnGroundParticles(player.x, GROUND_Y + 8, 8);
+        playJumpSound();
+      }
+    }
+
+    function drawEiffelTower(x, y) {
+      ctx.fillStyle = "#1d2b53";
+      ctx.fillRect(x + 23, y - 116, 4, 28);
+      ctx.fillRect(x + 24, y - 126, 2, 10);
+      ctx.fillStyle = "#e0a526";
+      ctx.fillRect(x + 23, y - 128, 4, 3);
+      ctx.fillStyle = "#1d2b53";
+      ctx.fillRect(x + 18, y - 88, 14, 6);
+      ctx.fillRect(x + 20, y - 82, 10, 26);
+      ctx.fillStyle = "#3a7bd5";
+      ctx.fillRect(x + 23, y - 78, 4, 18);
+      ctx.fillStyle = "#1d2b53";
+      ctx.fillRect(x + 12, y - 56, 26, 7);
+      ctx.fillRect(x + 14, y - 49, 7, 25);
+      ctx.fillRect(x + 29, y - 49, 7, 25);
+      ctx.fillRect(x + 5, y - 24, 40, 8);
+      ctx.fillRect(x + 3, y - 16, 13, 16);
+      ctx.fillRect(x + 34, y - 16, 13, 16);
+      ctx.fillStyle = "#3a7bd5";
+      ctx.fillRect(x + 16, y - 11, 18, 11);
+    }
+
+    function drawStreetLamp(x, y) {
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x - 3, y - 4, 6, 4);
+      ctx.fillRect(x - 1, y - 34, 2, 30);
+      ctx.fillRect(x - 4, y - 38, 8, 4);
+      ctx.fillStyle = "#e0a526";
+      ctx.fillRect(x - 2, y - 36, 4, 3);
+    }
+
+    function drawModernSkyline() {
+      ctx.fillStyle = "#2b5da8";
+      for (let hx = 20; hx < totalTrackWidth; hx += 160) {
+        ctx.fillRect(hx, GROUND_Y - 125, 55, 125);
+        ctx.fillRect(hx + 70, GROUND_Y - 95, 48, 95);
+      }
+
+      const buildingData = [
+        { offset: 40, w: 46, h: 80, winRows: 4, winCols: 2 },
+        { offset: 120, w: 35, h: 105, winRows: 5, winCols: 2 },
+        { offset: 180, w: 55, h: 70, winRows: 3, winCols: 3 },
+        { offset: 520, w: 40, h: 95, winRows: 5, winCols: 2 },
+        { offset: 600, w: 60, h: 75, winRows: 3, winCols: 3 },
+        { offset: 700, w: 48, h: 110, winRows: 6, winCols: 2 },
+        { offset: 790, w: 52, h: 65, winRows: 3, winCols: 3 },
+        { offset: 950, w: 42, h: 115, winRows: 6, winCols: 2 },
+        { offset: 1050, w: 55, h: 85, winRows: 4, winCols: 3 },
+        { offset: 1200, w: 44, h: 100, winRows: 5, winCols: 2 },
+        { offset: 1320, w: 50, h: 70, winRows: 3, winCols: 3 },
+        { offset: 1480, w: 58, h: 90, winRows: 4, winCols: 3 },
+        { offset: 1650, w: 45, h: 120, winRows: 6, winCols: 2 },
+        { offset: 1780, w: 54, h: 80, winRows: 4, winCols: 3 },
+        { offset: 1950, w: 42, h: 105, winRows: 5, winCols: 2 }
+      ];
+
+      buildingData.forEach(b => {
+        const bx = b.offset;
+        const by = GROUND_Y - b.h;
+
+        ctx.fillStyle = "#1d2b53";
+        ctx.fillRect(bx, by, b.w, b.h);
+
+        ctx.fillStyle = "#14141f";
+        ctx.fillRect(bx + Math.floor(b.w / 2) - 1, by - 10, 3, 10);
+
+        ctx.fillStyle = "#e0a526";
+        for (let r = 0; r < b.winRows; r++) {
+          for (let c = 0; c < b.winCols; c++) {
+            const wx = bx + 6 + c * 12;
+            const wy = by + 12 + r * 14;
+            if (wx + 6 < bx + b.w) {
+              ctx.fillRect(wx, wy, 6, 6);
+            }
+          }
+        }
+      });
+
+      const eiffelX = pathStartX + stopsSpacing * 1.45;
+      drawEiffelTower(eiffelX, GROUND_Y);
+    }
+
+    function drawPixelTree(x, y) {
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x - 2, y - 12, 4, 12);
+      ctx.fillStyle = "#3f8f4f";
+      ctx.fillRect(x - 14, y - 24, 28, 12);
+      ctx.fillRect(x - 10, y - 34, 20, 10);
+      ctx.fillRect(x - 6, y - 42, 12, 8);
+      ctx.fillRect(x - 2, y - 46, 4, 4);
+    }
+
+    function drawCharacter(cx, cy, frame, facing) {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const effectiveFrame = reducedMotion ? 0 : frame;
+
+      if (player.hitTimer > 0 && Math.floor(player.hitTimer / 3) % 2 === 0) {
+        return;
+      }
+
+      // Dynamic floor height (elevates onto the Victory Podium when standing over it)
+      let currentFloorY = GROUND_Y;
+      if (Math.abs(cx - podiumX) <= 16) {
+        currentFloorY = GROUND_Y - 36;
+      } else if (cx >= podiumX - 42 && cx < podiumX - 16) {
+        currentFloorY = GROUND_Y - 24;
+      } else if (cx > podiumX + 16 && cx <= podiumX + 42) {
+        currentFloorY = GROUND_Y - 16;
+      }
+
+      const heightAboveFloor = Math.max(0, currentFloorY - cy);
+      const shadowScale = Math.max(0.4, 1 - heightAboveFloor / 90);
+      const shadowWidth = Math.floor(16 * shadowScale);
+      ctx.fillStyle = "rgba(20, 20, 31, 0.45)";
+      ctx.fillRect(Math.floor(cx - shadowWidth / 2), currentFloorY + 8, shadowWidth, 3);
+
+      ctx.save();
+      ctx.translate(Math.floor(cx), Math.floor(cy + 10));
+      ctx.scale(facing * player.squashX, player.squashY);
+      ctx.translate(0, -10);
+
+      let bodyBob = 0;
+      if (!reducedMotion) {
+        if (player.isWalking && player.isGrounded) {
+          bodyBob = effectiveFrame % 2 === 1 ? -1 : 0;
+        } else if (player.isGrounded) {
+          bodyBob = Math.floor(player.idleTimer / 28) % 2 === 1 ? 1 : 0;
+        }
+      }
+
+      // Back arm
+      ctx.fillStyle = "#b58017";
+      let backArmX = -2;
+      if (player.isWalking && player.isGrounded) {
+        backArmX = effectiveFrame === 1 ? 2 : effectiveFrame === 3 ? -4 : -1;
+      } else if (!player.isGrounded) {
+        backArmX = -4;
+      }
+      ctx.fillRect(backArmX, -8 + bodyBob, 4, 8);
+
+      // Scarf tail fluttering
+      const scarfWave = reducedMotion ? 0 : (Math.floor(player.scarfPhase / 8) % 2);
+      ctx.fillStyle = "#96241c";
+      ctx.fillRect(-9, -10 + bodyBob + scarfWave, 4, 6);
+      ctx.fillStyle = "#c8372d";
+      ctx.fillRect(-7, -11 + bodyBob, 4, 5);
+
+      // Beret / Hat
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(-8, -23 + bodyBob, 16, 3);
+      ctx.fillStyle = "#1d2b53";
+      ctx.fillRect(-7, -26 + bodyBob, 14, 4);
+      ctx.fillRect(3, -28 + bodyBob, 5, 3);
+
+      // Head
+      ctx.fillStyle = "#dfd4b8";
+      ctx.fillRect(-5, -20 + bodyBob, 3, 8);
+      ctx.fillStyle = "#f4ecd8";
+      ctx.fillRect(-2, -20 + bodyBob, 7, 8);
+
+      // Eye
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(2, -18 + bodyBob, 2, 2);
+
+      // Scarf collar
+      ctx.fillStyle = "#c8372d";
+      ctx.fillRect(-5, -12 + bodyBob, 10, 3);
+
+      // Torso Jacket
+      ctx.fillStyle = "#b58017";
+      ctx.fillRect(-6, -9 + bodyBob, 4, 11);
+      ctx.fillStyle = "#e0a526";
+      ctx.fillRect(-2, -9 + bodyBob, 8, 11);
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(1, -8 + bodyBob, 2, 10);
+
+      // 4-frame Legs & Boots
+      if (!player.isGrounded) {
+        ctx.fillStyle = "#14141f";
+        ctx.fillRect(-6, 2, 4, 4);
+        ctx.fillStyle = "#1d2b53";
+        ctx.fillRect(2, 0, 5, 5);
+        ctx.fillStyle = "#14141f";
+        ctx.fillRect(-7, 6, 5, 2);
+        ctx.fillRect(2, 5, 6, 2);
+      } else if (effectiveFrame === 1) {
+        ctx.fillStyle = "#14141f";
+        ctx.fillRect(-7, 2, 4, 6);
+        ctx.fillStyle = "#1d2b53";
+        ctx.fillRect(3, 1, 4, 6);
+        ctx.fillStyle = "#14141f";
+        ctx.fillRect(-8, 8, 5, 2);
+        ctx.fillRect(3, 7, 6, 2);
+      } else if (effectiveFrame === 3) {
+        ctx.fillStyle = "#14141f";
+        ctx.fillRect(2, 2, 4, 6);
+        ctx.fillStyle = "#1d2b53";
+        ctx.fillRect(-6, 1, 4, 6);
+        ctx.fillStyle = "#14141f";
+        ctx.fillRect(2, 8, 5, 2);
+        ctx.fillRect(-7, 7, 6, 2);
+      } else {
+        ctx.fillStyle = "#14141f";
+        ctx.fillRect(-5, 2, 4, 6);
+        ctx.fillStyle = "#1d2b53";
+        ctx.fillRect(1, 2, 4, 6);
+        ctx.fillStyle = "#14141f";
+        ctx.fillRect(-6, 8, 5, 2);
+        ctx.fillRect(1, 8, 6, 2);
+      }
+
+      // Front swinging arm
+      ctx.fillStyle = "#e0a526";
+      let frontArmX = -2;
+      let frontArmY = -8 + bodyBob;
+      if (!player.isGrounded) {
+        frontArmX = 1;
+        frontArmY = -11;
+      } else if (player.isWalking) {
+        frontArmX = effectiveFrame === 1 ? -4 : effectiveFrame === 3 ? 2 : -1;
+      }
+      ctx.fillRect(frontArmX, frontArmY, 4, 7);
+      ctx.fillStyle = "#f4ecd8";
+      ctx.fillRect(frontArmX, frontArmY + 6, 4, 2);
+
+      ctx.restore();
+    }
+
+    function drawCroissantCheckpoint(x, y, isVisited, isPlayerHere, index) {
+      const stop = STOPS_DATA[index];
+
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x - 18, y - 4, 36, 12);
+      ctx.fillStyle = isVisited ? "#3f8f4f" : "#1d2b53";
+      ctx.fillRect(x - 14, y - 16, 28, 12);
+      ctx.fillStyle = "#f4ecd8";
+      ctx.fillRect(x - 12, y - 14, 24, 8);
+      ctx.fillStyle = isVisited ? "#3f8f4f" : "#c8372d";
+      ctx.fillRect(x - 6, y - 12, 12, 4);
+
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x - 22, y - 20, 44, 4);
+      ctx.fillStyle = "#dfd4b8";
+      ctx.fillRect(x - 20, y - 22, 40, 2);
+
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x - 16, y - 44, 32, 22);
+      ctx.fillStyle = "#e0a526";
+      ctx.fillRect(x - 14, y - 42, 28, 18);
+
+      ctx.fillStyle = "#c8372d";
+      ctx.fillRect(x - 12, y - 40, 4, 14);
+      ctx.fillRect(x + 8, y - 40, 4, 14);
+      ctx.fillRect(x - 2, y - 42, 4, 16);
+
+      ctx.fillStyle = "#f4ecd8";
+      ctx.fillRect(x - 6, y - 38, 4, 4);
+      ctx.fillRect(x + 2, y - 38, 4, 4);
+      ctx.fillRect(x - 10, y - 34, 3, 4);
+      ctx.fillRect(x + 7, y - 34, 3, 4);
+
+      ctx.fillStyle = "#e0a526";
+      ctx.fillRect(x - 18, y - 32, 4, 8);
+      ctx.fillRect(x + 14, y - 32, 4, 8);
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(x - 20, y - 30, 2, 8);
+      ctx.fillRect(x + 18, y - 30, 2, 8);
+
+      if (isPlayerHere) {
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(x - 4, y - 56, 8, 6);
+        ctx.fillRect(x - 6, y - 50, 12, 3);
+        ctx.fillRect(x - 2, y - 47, 4, 3);
+      }
+
+      ctx.font = "8px 'Press Start 2P', monospace";
+      ctx.textAlign = "center";
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#14141f";
+      ctx.strokeText(stop.year, x, y + 20);
+      ctx.fillStyle = "#ffffff";
+      ctx.fillText(stop.year, x, y + 20);
+
+      ctx.font = "7px 'Press Start 2P', monospace";
+      ctx.strokeText(stop.shortTitle, x, y - 60);
+      ctx.fillText(stop.shortTitle, x, y - 60);
+    }
+
+    function updatePhysics() {
+      let isMovingHorizontally = false;
+
+      if (keys.left) {
+        player.x -= player.moveSpeed;
+        player.facing = -1;
+        isMovingHorizontally = true;
+      }
+      if (keys.right) {
+        player.x += player.moveSpeed;
+        player.facing = 1;
+        isMovingHorizontally = true;
+      }
+
+      player.isWalking = isMovingHorizontally;
+
+      if (player.x < 35) player.x = 35;
+      if (player.x > totalTrackWidth - 45) player.x = totalTrackWidth - 45;
+
+      // Determine floor elevation (elevates character onto the podium steps)
+      let floorY = GROUND_Y;
+      if (Math.abs(player.x - podiumX) <= 16) {
+        floorY = GROUND_Y - 36;
+      } else if (player.x >= podiumX - 42 && player.x < podiumX - 16) {
+        floorY = GROUND_Y - 24;
+      } else if (player.x > podiumX + 16 && player.x <= podiumX + 42) {
+        floorY = GROUND_Y - 16;
+      }
+
+      const wasInAir = !player.isGrounded;
+      player.vy += player.gravity;
+      player.y += player.vy;
+
+      if (player.y >= floorY) {
+        player.y = floorY;
+        player.vy = 0;
+        player.isGrounded = true;
+
+        if (wasInAir) {
+          player.squashX = 1.24;
+          player.squashY = 0.78;
+          spawnGroundParticles(player.x, floorY + 8, 10);
+          playBeep(120, 0.04, "triangle");
+        }
+      }
+
+      // Trigger Victory Celebration when player reaches the podium after all 10 checkpoints
+      if (allCheckpointsCompleted() && Math.abs(player.x - podiumX) <= 36 && !victoryCelebrated) {
+        triggerVictoryCelebration();
+      }
+
+      player.squashX += (1 - player.squashX) * 0.2;
+      player.squashY += (1 - player.squashY) * 0.2;
+
+      player.idleTimer++;
+      player.scarfPhase += isMovingHorizontally ? 2 : 1;
+
+      if (isMovingHorizontally && player.isGrounded) {
+        player.walkTimer++;
+        if (player.walkTimer > 6) {
+          player.walkFrame = (player.walkFrame + 1) % 4;
+          player.walkTimer = 0;
+          if (player.walkFrame === 1 || player.walkFrame === 3) {
+            playStepSound();
+          }
+        }
+      } else if (!isMovingHorizontally && player.isGrounded) {
+        player.walkFrame = 0;
+        player.walkTimer = 0;
+      }
+
+      let closestIdx = 0;
+      let minDist = 9999;
+      STOPS_DATA.forEach((s, i) => {
+        const sx = pathStartX + i * stopsSpacing;
+        const d = Math.abs(player.x - sx);
+        if (d < minDist) {
+          minDist = d;
+          closestIdx = i;
+        }
+      });
+      if (closestIdx !== currentStopIndex) {
+        currentStopIndex = closestIdx;
+        updateTimelineStripSelection();
+      }
+    }
+
+    function renderCanvas() {
+      ctx.fillStyle = "#3a7bd5";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const targetCamX = player.x - canvas.width / 2;
+      cameraX += (targetCamX - cameraX) * 0.15;
+      if (cameraX < 0) cameraX = 0;
+      const maxCam = Math.max(0, totalTrackWidth - canvas.width);
+      if (cameraX > maxCam) cameraX = maxCam;
+
+      ctx.save();
+      ctx.translate(-Math.floor(cameraX), 0);
+
+      renderClouds();
+      drawModernSkyline();
+
+      // Scenery trees & Parisian streetlamps
+      for (let i = 0; i < podiumX - 80; i += 75) {
+        if ((i / 75) % 3 === 0) {
+          drawPixelTree(i + 25, GROUND_Y);
+        } else if ((i / 75) % 3 === 1) {
+          drawStreetLamp(i + 45, GROUND_Y);
+        }
+      }
+
+      // Ground & Cobblestone Road
+      ctx.fillStyle = "#dfd4b8";
+      ctx.fillRect(0, GROUND_Y, totalTrackWidth, canvas.height - GROUND_Y);
+      ctx.fillStyle = "#14141f";
+      ctx.fillRect(0, GROUND_Y, totalTrackWidth, 4);
+
+      // Dashed road lane markings
+      for (let px = 20; px < totalTrackWidth; px += 36) {
+        ctx.fillStyle = "#cfc2a0";
+        ctx.fillRect(px, GROUND_Y + 12, 18, 5);
+        ctx.fillRect(px + 12, GROUND_Y + 28, 16, 5);
+      }
+
+      STOPS_DATA.forEach((stop, index) => {
+        const kioskX = pathStartX + index * stopsSpacing;
+        const isHere = Math.abs(player.x - kioskX) < 28;
+        const isVisited = visitedStops.has(stop.id);
+        drawCroissantCheckpoint(kioskX, GROUND_Y, isVisited, isHere, index);
+      });
+
+      // Draw the Victory Podium at the end of the 10 checkpoints
+      drawVictoryPodium(podiumX, GROUND_Y);
+
+      renderParticles();
+      renderObstacles();
+      drawCharacter(player.x, player.y, player.walkFrame, player.facing);
+
+      ctx.restore();
+
+      // Top-left Traffic Speed HUD
+      ctx.fillStyle = "rgba(20, 20, 31, 0.82)";
+      ctx.fillRect(10, 10, 174, 22);
+      ctx.strokeStyle = allCheckpointsCompleted() ? "#3f8f4f" : "#e0a526";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(10, 10, 174, 22);
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "7px 'Press Start 2P', monospace";
+      ctx.textAlign = "left";
+      if (allCheckpointsCompleted()) {
+        ctx.fillText("TRAFIC: STOP (10/10)", 16, 24);
+      } else {
+        const speedMult = getSpeedMultiplier().toFixed(1);
+        ctx.fillText(`TRAFIC: ${speedMult}x (${visitedStops.size}/10)`, 16, 24);
+      }
+
+      // Checkpoint Teleport Alert Banner when hit
+      if (player.alertBannerTimer > 0) {
+        ctx.fillStyle = "#c8372d";
+        ctx.fillRect(canvas.width / 2 - 175, 10, 350, 24);
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(canvas.width / 2 - 175, 10, 350, 24);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "7px 'Press Start 2P', monospace";
+        ctx.textAlign = "center";
+        const msg = currentLang === "fr"
+          ? "TOUCHE ! RETOUR AU POINT PRECEDENT"
+          : "HIT! RETURNED TO EARLIER CHECKPOINT";
+        ctx.fillText(msg, canvas.width / 2, 25);
+      }
+    }
+
+    function gameLoop() {
+      updateClouds();
+      updatePhysics();
+      updateObstacles();
+      updateParticles();
+      renderCanvas();
+      updateAndRenderConfetti();
+      requestAnimationFrame(gameLoop);
+    }
+
+    /**
+     * Detailed, Zoomable & Pannable Map of France with Paris Highlight
+     */
+    const mapState = {
+      scale: 1,
+      minScale: 1,
+      maxScale: 3.2,
+      offsetX: 0,
+      offsetY: 0,
+      isDragging: false,
+      dragStartX: 0,
+      dragStartY: 0
+    };
+
+    const mapCanvas = document.getElementById("franceMapCanvas");
+    const mctx = mapCanvas.getContext("2d");
+
+    function clampMapOffset() {
+      const w = mapCanvas.width;
+      const h = mapCanvas.height;
+      const maxOffX = 0;
+      const minOffX = w - w * mapState.scale;
+      const maxOffY = 0;
+      const minOffY = h - h * mapState.scale;
+      mapState.offsetX = Math.min(maxOffX, Math.max(minOffX, mapState.offsetX));
+      mapState.offsetY = Math.min(maxOffY, Math.max(minOffY, mapState.offsetY));
+    }
+
+    function setMapZoom(newScale, focusX = 175, focusY = 170) {
+      const clamped = Math.min(mapState.maxScale, Math.max(mapState.minScale, newScale));
+      const worldX = (focusX - mapState.offsetX) / mapState.scale;
+      const worldY = (focusY - mapState.offsetY) / mapState.scale;
+
+      mapState.scale = clamped;
+      mapState.offsetX = focusX - worldX * mapState.scale;
+      mapState.offsetY = focusY - worldY * mapState.scale;
+      clampMapOffset();
+
+      document.getElementById("map-zoom-label").textContent = `${mapState.scale.toFixed(1)}x`;
+      renderFranceMap();
+    }
+
+    function focusMapOnParis() {
+      const paris = CITIES_DATA[0];
+      mapState.scale = 2.4;
+      mapState.offsetX = mapCanvas.width / 2 - paris.x * mapState.scale;
+      mapState.offsetY = mapCanvas.height / 2 - paris.y * mapState.scale;
+      clampMapOffset();
+      document.getElementById("map-zoom-label").textContent = `${mapState.scale.toFixed(1)}x`;
+      renderFranceMap();
+      selectCityDetails(paris);
+    }
+
+    function renderFranceMap() {
+      const w = mapCanvas.width;
+      const h = mapCanvas.height;
+
+      mctx.fillStyle = "#2b5da8";
+      mctx.fillRect(0, 0, w, h);
+
+      mctx.save();
+      mctx.translate(mapState.offsetX, mapState.offsetY);
+      mctx.scale(mapState.scale, mapState.scale);
+
+      mctx.strokeStyle = "rgba(255, 255, 255, 0.14)";
+      mctx.lineWidth = 1 / mapState.scale;
+      for (let gx = 0; gx < w; gx += 35) {
+        mctx.beginPath();
+        mctx.moveTo(gx, 0);
+        mctx.lineTo(gx, h);
+        mctx.stroke();
+      }
+      for (let gy = 0; gy < h; gy += 35) {
+        mctx.beginPath();
+        mctx.moveTo(0, gy);
+        mctx.lineTo(w, gy);
+        mctx.stroke();
+      }
+
+      // Coastal drop shadow for mainland France
+      mctx.fillStyle = "#14141f";
+      mctx.beginPath();
+      mctx.moveTo(154, 24);
+      mctx.lineTo(208, 28);
+      mctx.lineTo(274, 82);
+      mctx.lineTo(282, 148);
+      mctx.lineTo(266, 212);
+      mctx.lineTo(274, 266);
+      mctx.lineTo(222, 294);
+      mctx.lineTo(176, 304);
+      mctx.lineTo(112, 292);
+      mctx.lineTo(98, 224);
+      mctx.lineTo(86, 156);
+      mctx.lineTo(36, 118);
+      mctx.lineTo(42, 96);
+      mctx.lineTo(94, 88);
+      mctx.lineTo(116, 62);
+      mctx.closePath();
+      mctx.fill();
+
+      // Detailed France Hexagon polygon
+      mctx.fillStyle = "#f4ecd8";
+      mctx.strokeStyle = "#14141f";
+      mctx.lineWidth = 2.5 / mapState.scale;
+
+      mctx.beginPath();
+      mctx.moveTo(150, 20);
+      mctx.lineTo(204, 24);
+      mctx.lineTo(270, 78);
+      mctx.lineTo(278, 144);
+      mctx.lineTo(262, 208);
+      mctx.lineTo(270, 262);
+      mctx.lineTo(218, 290);
+      mctx.lineTo(172, 300);
+      mctx.lineTo(108, 288);
+      mctx.lineTo(94, 220);
+      mctx.lineTo(82, 152);
+      mctx.lineTo(32, 114);
+      mctx.lineTo(38, 92);
+      mctx.lineTo(90, 84);
+      mctx.lineTo(112, 58);
+      mctx.closePath();
+      mctx.fill();
+      mctx.stroke();
+
+      // Corsica island
+      mctx.fillStyle = "#f4ecd8";
+      mctx.beginPath();
+      mctx.moveTo(304, 268);
+      mctx.lineTo(316, 276);
+      mctx.lineTo(312, 308);
+      mctx.lineTo(300, 302);
+      mctx.closePath();
+      mctx.fill();
+      mctx.stroke();
+
+      // Major Rivers (Seine, Loire, Rhône)
+      mctx.strokeStyle = "#3a7bd5";
+      mctx.lineWidth = 1.6 / mapState.scale;
+      mctx.beginPath();
+      mctx.moveTo(112, 62);
+      mctx.lineTo(155, 78);
+      mctx.lineTo(185, 92);
+      mctx.lineTo(222, 114);
+      mctx.stroke();
+
+      mctx.beginPath();
+      mctx.moveTo(84, 152);
+      mctx.lineTo(145, 148);
+      mctx.lineTo(192, 165);
+      mctx.stroke();
+
+      mctx.beginPath();
+      mctx.moveTo(235, 165);
+      mctx.lineTo(235, 205);
+      mctx.lineTo(224, 278);
+      mctx.stroke();
+
+      // Île-de-France / Paris Metropolitan Region Ring
+      const parisCity = CITIES_DATA[0];
+      mctx.fillStyle = "rgba(224, 165, 38, 0.35)";
+      mctx.strokeStyle = "#1d2b53";
+      mctx.lineWidth = 1.4 / mapState.scale;
+      mctx.beginPath();
+      mctx.arc(parisCity.x, parisCity.y, 20, 0, Math.PI * 2);
+      mctx.fill();
+      mctx.stroke();
+
+      if (mapState.scale >= 1.5) {
+        const px = parisCity.x - 10;
+        const py = parisCity.y + 4;
+        mctx.fillStyle = "#1d2b53";
+        mctx.fillRect(px - 1, py - 9, 2, 9);
+        mctx.fillRect(px - 3, py - 3, 6, 3);
+
+        mctx.fillStyle = "#14141f";
+        mctx.font = `${Math.max(4, 6 / mapState.scale)}px 'Press Start 2P', monospace`;
+        mctx.textAlign = "center";
+        mctx.fillText("ÎLE-DE-FRANCE", parisCity.x, parisCity.y - 23);
+        mctx.fillText("LA SEINE", parisCity.x - 24, parisCity.y - 12);
+      }
+
+      CITIES_DATA.forEach(city => {
+        const markerSize = city.isCapital ? 12 : 9;
+        const half = markerSize / 2;
+
+        if (city.isCapital) {
+          mctx.strokeStyle = "#e0a526";
+          mctx.lineWidth = 2 / mapState.scale;
+          mctx.strokeRect(city.x - half - 3, city.y - half - 3, markerSize + 6, markerSize + 6);
+        }
+
+        mctx.fillStyle = city.isCapital ? "#c8372d" : "#1d2b53";
+        mctx.fillRect(city.x - half, city.y - half, markerSize, markerSize);
+        mctx.strokeStyle = "#14141f";
+        mctx.lineWidth = 1.8 / mapState.scale;
+        mctx.strokeRect(city.x - half, city.y - half, markerSize, markerSize);
+
+        mctx.fillStyle = "#ffffff";
+        mctx.fillRect(city.x - 2, city.y - 2, 4, 4);
+
+        mctx.fillStyle = "#14141f";
+        const fontSize = Math.max(5.5, 8 / Math.sqrt(mapState.scale));
+        mctx.font = `${fontSize}px 'Press Start 2P', monospace`;
+        mctx.textAlign = "left";
+        mctx.fillText(city.name, city.x + half + 5, city.y + 3);
+      });
+
+      mctx.restore();
+    }
+
+    function selectCityDetails(city) {
+      document.getElementById("city-details-prompt").style.display = "none";
+      const contentBox = document.getElementById("city-details-content");
+      contentBox.style.display = "block";
+      document.getElementById("city-name-display").textContent =
+        city.isCapital ? `★ ${city.name.toUpperCase()} (CAPITALE)` : `■ ${city.name.toUpperCase()}`;
+      document.getElementById("city-desc-display").textContent =
+        currentLang === "fr" ? city.descFr : city.descEn;
+
+      const gamesList = city.games.map(g => `• ${g}`).join("<br>");
+      document.getElementById("city-games-display").innerHTML =
+        `<strong>${currentLang === "fr" ? "Jeux de la frise créés ici :" : "Timeline games made here:"}</strong><br>${gamesList}`;
+    }
+
+    function handleMapClick(clientX, clientY) {
+      const rect = mapCanvas.getBoundingClientRect();
+      const canvasX = ((clientX - rect.left) * (mapCanvas.width / rect.width) - mapState.offsetX) / mapState.scale;
+      const canvasY = ((clientY - rect.top) * (mapCanvas.height / rect.height) - mapState.offsetY) / mapState.scale;
+
+      let foundCity = null;
+      CITIES_DATA.forEach(city => {
+        const hitRadius = 22 / Math.sqrt(mapState.scale);
+        const dist = Math.hypot(canvasX - city.x, canvasY - city.y);
+        if (dist < hitRadius) {
+          foundCity = city;
+        }
+      });
+
+      if (foundCity) {
+        selectCityDetails(foundCity);
+      }
+    }
+
+    document.getElementById("map-zoom-in").addEventListener("click", () => setMapZoom(mapState.scale + 0.5));
+    document.getElementById("map-zoom-out").addEventListener("click", () => setMapZoom(mapState.scale - 0.5));
+    document.getElementById("map-zoom-paris").addEventListener("click", focusMapOnParis);
+    document.getElementById("map-zoom-reset").addEventListener("click", () => {
+      mapState.scale = 1;
+      mapState.offsetX = 0;
+      mapState.offsetY = 0;
+      document.getElementById("map-zoom-label").textContent = "1.0x";
+      renderFranceMap();
+    });
+
+    mapCanvas.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      const rect = mapCanvas.getBoundingClientRect();
+      const fx = (e.clientX - rect.left) * (mapCanvas.width / rect.width);
+      const fy = (e.clientY - rect.top) * (mapCanvas.height / rect.height);
+      const delta = e.deltaY < 0 ? 0.35 : -0.35;
+      setMapZoom(mapState.scale + delta, fx, fy);
+    }, { passive: false });
+
+    let dragMoved = false;
+    mapCanvas.addEventListener("pointerdown", (e) => {
+      mapState.isDragging = true;
+      dragMoved = false;
+      mapState.dragStartX = e.clientX;
+      mapState.dragStartY = e.clientY;
+    });
+
+    window.addEventListener("pointermove", (e) => {
+      if (!mapState.isDragging) return;
+      const dx = e.clientX - mapState.dragStartX;
+      const dy = e.clientY - mapState.dragStartY;
+      if (Math.hypot(dx, dy) > 4) {
+        dragMoved = true;
+      }
+      mapState.dragStartX = e.clientX;
+      mapState.dragStartY = e.clientY;
+      mapState.offsetX += dx;
+      mapState.offsetY += dy;
+      clampMapOffset();
+      renderFranceMap();
+    });
+
+    window.addEventListener("pointerup", (e) => {
+      if (mapState.isDragging) {
+        mapState.isDragging = false;
+        if (!dragMoved) {
+          handleMapClick(e.clientX, e.clientY);
+        }
+      }
+    });
+
+    /**
+     * Cursor Hover Zoom across website sections
+     */
+    const zoomToggleBtn = document.getElementById("zoom-toggle-btn");
+    zoomToggleBtn.addEventListener("click", () => {
+      cursorZoomEnabled = !cursorZoomEnabled;
+      document.body.classList.toggle("cursor-zoom-enabled", cursorZoomEnabled);
+      zoomToggleBtn.textContent = cursorZoomEnabled ? "Loupe: ON" : "Loupe: OFF";
+      zoomToggleBtn.classList.toggle("active", cursorZoomEnabled);
+
+      if (!cursorZoomEnabled) {
+        document.querySelectorAll(".zoom-target").forEach(el => {
+          el.style.transform = "";
+          el.style.transformOrigin = "";
+        });
+      }
+    });
+
+    document.querySelectorAll(".zoom-target").forEach(target => {
+      target.addEventListener("mousemove", (e) => {
+        if (!cursorZoomEnabled) return;
+        const rect = target.getBoundingClientRect();
+        const relX = ((e.clientX - rect.left) / rect.width) * 100;
+        const relY = ((e.clientY - rect.top) / rect.height) * 100;
+        target.style.transformOrigin = `${relX.toFixed(1)}% ${relY.toFixed(1)}%`;
+        target.style.transform = "scale(1.03)";
+      });
+
+      target.addEventListener("mouseleave", () => {
+        target.style.transform = "";
+        target.style.transformOrigin = "";
+      });
+    });
+
+    const dialog = document.getElementById("stop-dialog");
+    const closeBtn = document.getElementById("dialog-close-btn");
+
+    function openStopPanel(index) {
+      const stop = STOPS_DATA[index];
+      const langData = stop[currentLang];
+
+      visitedStops.add(stop.id);
+      updateShelf();
+      updateTimelineStripSelection();
+
+      // Clear obstacles immediately once all 10 stops are completed
+      if (allCheckpointsCompleted()) {
+        obstacles.length = 0;
+      }
+
+      if (soundEnabled) {
+        playBeep(260, 0.07, "square");
+        setTimeout(() => playBeep(330, 0.07, "square"), 80);
+        setTimeout(() => playBeep(392, 0.09, "square"), 160);
+      }
+
+      document.getElementById("dialog-year").textContent = stop.year;
+      document.getElementById("dialog-title").textContent = langData.title;
+      document.getElementById("dialog-meta").textContent =
+        `${currentLang === 'fr' ? 'Studio' : 'Studio'}: ${langData.studio} | ` +
+        `${currentLang === 'fr' ? 'Auteur(s)' : 'Creator(s)'}: ${langData.creator} | ` +
+        `${currentLang === 'fr' ? 'Support' : 'Platform'}: ${langData.platform}`;
+
+      const imgEl = document.getElementById("dialog-img");
+      const fallbackEl = document.getElementById("dialog-img-fallback");
+      imgEl.style.display = "block";
+      fallbackEl.style.display = "none";
+      imgEl.alt = `${langData.title} screenshot`;
+      imgEl.src = `img/${stop.slug}.jpg`;
+
+      document.getElementById("dialog-credit").textContent = langData.credit;
+      document.getElementById("dialog-desc").textContent = langData.desc;
+      document.getElementById("dialog-impact-fr").textContent = langData.impactFr;
+      document.getElementById("dialog-impact-intl").textContent = langData.impactIntl;
+
+      const sourceLink = document.getElementById("dialog-source-link");
+      sourceLink.textContent = langData.sourceName;
+      sourceLink.href = stop.sourceUrl;
+
+      document.getElementById("lbl-desc").textContent = currentLang === "fr" ? "Description" : "Description";
+      document.getElementById("lbl-impact-fr").textContent = currentLang === "fr" ? "Impact en France" : "Impact in France";
+      document.getElementById("lbl-impact-intl").textContent = currentLang === "fr" ? "Impact international" : "International Impact";
+      document.getElementById("lbl-source").textContent = currentLang === "fr" ? "Source :" : "Source:";
+
+      if (typeof dialog.showModal === "function") {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute("open", "");
+      }
+      closeBtn.focus();
+    }
+
+    function closeStopPanel() {
+      if (typeof dialog.close === "function") {
+        dialog.close();
+      } else {
+        dialog.removeAttribute("open");
+      }
+    }
+
+    closeBtn.addEventListener("click", closeStopPanel);
+    dialog.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeStopPanel();
+    });
+
+    dialog.addEventListener("click", (e) => {
+      const rect = dialog.getBoundingClientRect();
+      const inDialog = (
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width
+      );
+      if (!inDialog) {
+        closeStopPanel();
+      }
+    });
+
+    function instantJumpAndOpen(index) {
+      const targetPos = pathStartX + index * stopsSpacing;
+      player.x = targetPos;
+      player.y = GROUND_Y;
+      player.vy = 0;
+      player.isGrounded = true;
+      currentStopIndex = index;
+      openStopPanel(index);
+    }
+
+    function buildTimelineStrip() {
+      const container = document.getElementById("timeline-strip");
+      container.innerHTML = "";
+      STOPS_DATA.forEach((stop, index) => {
+        const marker = document.createElement("button");
+        marker.className = "timeline-marker";
+        marker.id = `marker-${index}`;
+
+        const yearSpan = document.createElement("span");
+        yearSpan.className = "timeline-marker-year";
+        yearSpan.textContent = stop.year;
+
+        const nameSpan = document.createElement("span");
+        nameSpan.className = "timeline-marker-name";
+        nameSpan.textContent = stop.shortTitle;
+
+        marker.appendChild(yearSpan);
+        marker.appendChild(nameSpan);
+        marker.title = `${stop.year} - ${stop[currentLang].title}`;
+
+        marker.addEventListener("click", () => {
+          instantJumpAndOpen(index);
+        });
+        container.appendChild(marker);
+      });
+      updateTimelineStripSelection();
+    }
+
+    function updateTimelineStripSelection() {
+      STOPS_DATA.forEach((stop, index) => {
+        const marker = document.getElementById(`marker-${index}`);
+        if (!marker) return;
+        if (visitedStops.has(stop.id)) {
+          marker.classList.add("visited");
+        } else {
+          marker.classList.remove("visited");
+        }
+
+        if (currentStopIndex === index) {
+          marker.classList.add("current");
+        } else {
+          marker.classList.remove("current");
+        }
+      });
+    }
+
+    function updateShelf() {
+      const shelfGrid = document.getElementById("shelf-grid");
+      const shelfCounter = document.getElementById("shelf-counter");
+      shelfCounter.textContent = `${visitedStops.size} / 10`;
+      shelfGrid.innerHTML = "";
+
+      STOPS_DATA.forEach((stop, idx) => {
+        const slot = document.createElement("div");
+        slot.className = "cartridge-slot";
+        if (visitedStops.has(stop.id)) {
+          slot.classList.add("unlocked");
+          slot.innerHTML = `<strong>${stop.year}</strong><br>${stop.shortTitle}`;
+          slot.title = stop[currentLang].title;
+          slot.addEventListener("click", () => instantJumpAndOpen(idx));
+        } else {
+          slot.innerHTML = `<strong>${stop.year}</strong><br>[ ? ]`;
+        }
+        shelfGrid.appendChild(slot);
+      });
+    }
+
+    function populateSourcesList() {
+      const container = document.getElementById("sources-container");
+      container.innerHTML = "";
+      STOPS_DATA.forEach(stop => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${stop.year} - ${stop[currentLang].title} (${stop[currentLang].studio})</strong> : ` +
+          `<a href="${stop.sourceUrl}" target="_blank" rel="noopener noreferrer">${stop[currentLang].sourceName}</a>`;
+        container.appendChild(li);
+      });
+    }
+
+    /**
+     * Blurred & 1-Minute Timed Quiz Logic
+     */
+    function formatTimer(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      const mm = String(mins).padStart(2, "0");
+      const ss = String(secs).padStart(2, "0");
+      const label = currentLang === "fr" ? "Temps" : "Time";
+      return `${label} : ${mm}:${ss}`;
+    }
+
+    function updateTimerUI() {
+      const timerBadge = document.getElementById("quiz-timer-display");
+      timerBadge.textContent = formatTimer(quizTimeRemaining);
+      if (quizTimeRemaining <= 10 && quizStarted && !quizFinished) {
+        timerBadge.classList.add("urgent");
+      } else {
+        timerBadge.classList.remove("urgent");
+      }
+    }
+
+    function startQuiz() {
+      if (quizStarted) return;
+      quizStarted = true;
+      quizFinished = false;
+      quizTimeRemaining = 60;
+
+      document.getElementById("quiz-overlay").classList.add("hidden");
+      document.getElementById("quiz-container").classList.remove("quiz-blurred");
+      document.getElementById("quiz-result-banner").classList.remove("visible");
+
+      playBeep(440, 0.08, "square");
+      updateTimerUI();
+      renderQuiz();
+
+      clearInterval(quizTimerInterval);
+      quizTimerInterval = setInterval(() => {
+        quizTimeRemaining--;
+        updateTimerUI();
+
+        if (quizTimeRemaining <= 0) {
+          finishQuiz(true);
+        }
+      }, 1000);
+    }
+
+    function finishQuiz(timeExpired = false) {
+      quizFinished = true;
+      clearInterval(quizTimerInterval);
+      quizTimerInterval = null;
+
+      let score = 0;
+      QUIZ_DATA.forEach((item, idx) => {
+        if (quizAnswers[idx] === item[currentLang].answer) {
+          score++;
+        }
+      });
+
+      const banner = document.getElementById("quiz-result-banner");
+      if (currentLang === "fr") {
+        banner.textContent = timeExpired
+          ? `Temps écoulé ! Score final : ${score} / ${QUIZ_DATA.length}.`
+          : `Quiz terminé ! Score final : ${score} / ${QUIZ_DATA.length}.`;
+      } else {
+        banner.textContent = timeExpired
+          ? `Time's up! Final score: ${score} / ${QUIZ_DATA.length}.`
+          : `Quiz complete! Final score: ${score} / ${QUIZ_DATA.length}.`;
+      }
+      banner.classList.add("visible");
+      renderQuiz();
+    }
+
+    function resetQuiz() {
+      clearInterval(quizTimerInterval);
+      quizTimerInterval = null;
+      quizAnswers = new Array(QUIZ_DATA.length).fill(null);
+      quizStarted = false;
+      quizFinished = false;
+      quizTimeRemaining = 60;
+
+      document.getElementById("quiz-overlay").classList.remove("hidden");
+      document.getElementById("quiz-container").classList.add("quiz-blurred");
+      document.getElementById("quiz-result-banner").classList.remove("visible");
+
+      updateTimerUI();
+      renderQuiz();
+    }
+
+    function renderQuiz() {
+      const container = document.getElementById("quiz-container");
+      container.innerHTML = "";
+
+      QUIZ_DATA.forEach((item, qIdx) => {
+        const qData = item[currentLang];
+        const card = document.createElement("div");
+        card.className = "quiz-item";
+
+        const qText = document.createElement("div");
+        qText.className = "quiz-question";
+        qText.textContent = qData.q;
+        card.appendChild(qText);
+
+        const optionsGrid = document.createElement("div");
+        optionsGrid.className = "quiz-options";
+
+        const chosen = quizAnswers[qIdx];
+
+        qData.options.forEach((optText, optIdx) => {
+          const btn = document.createElement("button");
+          btn.className = "quiz-option-btn";
+          btn.textContent = optText;
+
+          if (!quizStarted) {
+            btn.disabled = true;
+          } else if (chosen !== null || quizFinished) {
+            btn.disabled = true;
+            if (optIdx === qData.answer) {
+              btn.classList.add("correct");
+            } else if (optIdx === chosen) {
+              btn.classList.add("wrong");
+            }
+          } else {
+            btn.addEventListener("click", () => {
+              quizAnswers[qIdx] = optIdx;
+              if (optIdx === qData.answer) {
+                playBeep(523, 0.1, "square");
+              } else {
+                playBeep(140, 0.15, "sawtooth");
+              }
+
+              const allAnswered = quizAnswers.every(ans => ans !== null);
+              if (allAnswered) {
+                finishQuiz(false);
+              } else {
+                renderQuiz();
+              }
+            });
+          }
+
+          optionsGrid.appendChild(btn);
+        });
+
+        card.appendChild(optionsGrid);
+        container.appendChild(card);
+      });
+
+      updateQuizScore();
+    }
+
+    function updateQuizScore() {
+      let score = 0;
+      QUIZ_DATA.forEach((item, idx) => {
+        if (quizAnswers[idx] === item[currentLang].answer) {
+          score++;
+        }
+      });
+      document.getElementById("quiz-score-display").textContent = `Score : ${score} / ${QUIZ_DATA.length}`;
+    }
+
+    document.getElementById("quiz-start-btn").addEventListener("click", startQuiz);
+    document.getElementById("quiz-reset-btn").addEventListener("click", resetQuiz);
+
+    window.addEventListener("keydown", (e) => {
+      if (dialog.open || victoryDialog.open) return;
+
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keys.left = true;
+      } else if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keys.right = true;
+      } else if (e.key === " " || e.code === "Space") {
+        e.preventDefault();
+        triggerJump();
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (Math.abs(player.x - podiumX) <= 44 && allCheckpointsCompleted()) {
+          triggerVictoryCelebration();
+        } else {
+          openStopPanel(currentStopIndex);
+        }
+      }
+    });
+
+    window.addEventListener("keyup", (e) => {
+      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+        keys.left = false;
+      } else if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+        keys.right = false;
+      }
+    });
+
+    function bindTouchButton(btnId, onDown, onUp) {
+      const btn = document.getElementById(btnId);
+      if (!btn) return;
+
+      const handlePress = (e) => {
+        e.preventDefault();
+        btn.classList.add("pressed");
+        if (onDown) onDown();
+      };
+
+      const handleRelease = (e) => {
+        e.preventDefault();
+        btn.classList.remove("pressed");
+        if (onUp) onUp();
+      };
+
+      btn.addEventListener("touchstart", handlePress, { passive: false });
+      btn.addEventListener("touchend", handleRelease, { passive: false });
+      btn.addEventListener("touchcancel", handleRelease, { passive: false });
+      btn.addEventListener("mousedown", handlePress);
+      btn.addEventListener("mouseup", handleRelease);
+      btn.addEventListener("mouseleave", handleRelease);
+    }
+
+    bindTouchButton("btn-left", () => { keys.left = true; }, () => { keys.left = false; });
+    bindTouchButton("btn-right", () => { keys.right = true; }, () => { keys.right = false; });
+    bindTouchButton("btn-jump", () => { triggerJump(); }, null);
+
+    const actionBtn = document.getElementById("btn-action");
+    actionBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (Math.abs(player.x - podiumX) <= 44 && allCheckpointsCompleted()) {
+        triggerVictoryCelebration();
+      } else {
+        openStopPanel(currentStopIndex);
+      }
+    });
+
+    // Tap directly on canvas
+    canvas.addEventListener("pointerdown", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const clickX = (e.clientX - rect.left) * scaleX + cameraX;
+
+      // Tap on podium
+      if (Math.abs(clickX - podiumX) < 46) {
+        player.x = podiumX;
+        if (allCheckpointsCompleted()) {
+          triggerVictoryCelebration();
+        }
+        return;
+      }
+
+      let clickedKioskIndex = -1;
+      STOPS_DATA.forEach((stop, idx) => {
+        const kioskX = pathStartX + idx * stopsSpacing;
+        if (Math.abs(clickX - kioskX) < 40) {
+          clickedKioskIndex = idx;
+        }
+      });
+
+      if (clickedKioskIndex !== -1) {
+        instantJumpAndOpen(clickedKioskIndex);
+      } else {
+        if (clickX < player.x) {
+          player.x = Math.max(35, player.x - 30);
+          player.facing = -1;
+        } else {
+          player.x = Math.min(totalTrackWidth - 45, player.x + 30);
+          player.facing = 1;
+        }
+      }
+    });
+
+    // Audio button
+    const soundBtn = document.getElementById("sound-btn");
+    soundBtn.addEventListener("click", () => {
+      soundEnabled = !soundEnabled;
+      soundBtn.textContent = soundEnabled ? "Audio: ON" : "Audio: OFF";
+      if (soundEnabled) {
+        soundBtn.classList.add("active");
+        playBeep(440, 0.1, "square");
+      } else {
+        soundBtn.classList.remove("active");
+      }
+    });
+
+    // Language switch
+    const langBtn = document.getElementById("lang-btn");
+    langBtn.addEventListener("click", () => {
+      currentLang = currentLang === "fr" ? "en" : "fr";
+      langBtn.textContent = currentLang === "fr" ? "EN" : "FR";
+      updateLanguageUI();
+    });
+
+    function updateLanguageUI() {
+      if (currentLang === "fr") {
+        document.getElementById("ui-title").textContent = "Histoire du jeu vidéo en France";
+        document.getElementById("ui-subtitle").textContent = "Frise chronologique interactive (1987-2025)";
+        document.getElementById("ui-legend").textContent = "[Flèches / A-D]: Marcher | [Espace]: Sauter | [Entrée]: Inspecter | Visitez les 10 étapes puis montez sur le podium !";
+        document.getElementById("btn-left").textContent = "< GAUCHE";
+        document.getElementById("btn-right").textContent = "DROITE >";
+        document.getElementById("btn-jump").textContent = "SAUT";
+        document.getElementById("btn-action").textContent = "OUVRIR";
+        document.getElementById("shelf-title").textContent = "Étagère de cartouches";
+        document.getElementById("map-title").textContent = "Géographie des studios français & Zoom Paris";
+        document.getElementById("city-details-prompt").textContent = "Cliquez sur une ville (ou cliquez sur PARIS pour zoomer) afin d'explorer ses studios et jeux créés.";
+        document.getElementById("paris-box-title").textContent = "FOCUS CAPITALE : PARIS & ÎLE-DE-FRANCE";
+        document.getElementById("paris-box-desc").textContent = "Berceau historique du jeu vidéo français (Lankhor, ERE Informatique, Delphine Software, Quantic Dream, Dontnod). Utilisez + ou le bouton PARIS pour inspecter la Seine et ses quartiers.";
+        document.getElementById("credits-title").textContent = "Crédits de l'équipe";
+        document.getElementById("sources-title").textContent = "Sources documentaires";
+        document.getElementById("quiz-title").textContent = "Quiz sur les jeux de la frise";
+        document.getElementById("quiz-overlay-text").textContent = "Vous disposez de 60 secondes pour répondre aux 6 questions sur les jeux de la frise.";
+        document.getElementById("quiz-start-btn").textContent = "Démarrer le quiz (1 min)";
+        document.getElementById("quiz-reset-btn").textContent = "Recommencer le quiz";
+      } else {
+        document.getElementById("ui-title").textContent = "History of Video Games in France";
+        document.getElementById("ui-subtitle").textContent = "Interactive Timeline Walk (1987-2025)";
+        document.getElementById("ui-legend").textContent = "[Arrows / A-D]: Walk | [Space]: Jump | [Enter]: Inspect | Visit all 10 stops then step onto the podium!";
+        document.getElementById("btn-left").textContent = "< LEFT";
+        document.getElementById("btn-right").textContent = "RIGHT >";
+        document.getElementById("btn-jump").textContent = "JUMP";
+        document.getElementById("btn-action").textContent = "OPEN";
+        document.getElementById("shelf-title").textContent = "Cartridge Shelf";
+        document.getElementById("map-title").textContent = "French Studio Geography & Paris Zoom";
+        document.getElementById("city-details-prompt").textContent = "Click any city marker (or press PARIS to zoom in) to inspect its studios and games.";
+        document.getElementById("paris-box-title").textContent = "CAPITAL SPOTLIGHT: PARIS & ÎLE-DE-FRANCE";
+        document.getElementById("paris-box-desc").textContent = "Historic cradle of French video games (Lankhor, ERE Informatique, Delphine Software, Quantic Dream, Dontnod). Use + or the PARIS button to inspect the Seine and districts.";
+        document.getElementById("credits-title").textContent = "Team Credits";
+        document.getElementById("sources-title").textContent = "Documentary Sources";
+        document.getElementById("quiz-title").textContent = "Timeline Games Quiz";
+        document.getElementById("quiz-overlay-text").textContent = "You have 60 seconds to answer all 6 questions about the timeline games.";
+        document.getElementById("quiz-start-btn").textContent = "Start Quiz (1 min)";
+        document.getElementById("quiz-reset-btn").textContent = "Restart Quiz";
+      }
+
+      updateTimerUI();
+      buildTimelineStrip();
+      updateShelf();
+      populateSourcesList();
+      renderQuiz();
+    }
+
+    function initGame() {
+      buildTimelineStrip();
+      updateShelf();
+      populateSourcesList();
+      renderFranceMap();
+      updateTimerUI();
+      renderQuiz();
+      requestAnimationFrame(gameLoop);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initGame);
+    } else {
+      initGame();
+    }
+  </script>
+</body>
+</html>
